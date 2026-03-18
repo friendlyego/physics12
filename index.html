@@ -1,0 +1,2539 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>GYAAN SUTRA — JEE Physics Formula Atlas</title>
+<link href="https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@300;400;500;700&family=Syne:wght@400;600;700;800&family=Outfit:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.css">
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/katex.min.js"></script>
+<script defer src="https://cdn.jsdelivr.net/npm/katex@0.16.9/dist/contrib/auto-render.min.js" onload="renderMathInElement(document.body,{delimiters:[{left:'$$',right:'$$',display:true},{left:'$',right:'$',display:false}],throwOnError:false});"></script>
+<style>
+:root {
+  --bg: #080c14;
+  --surface: #0f1520;
+  --surface2: #151d2e;
+  --border: #1e2d45;
+  --border2: #243347;
+  --cyan: #00d4ff;
+  --cyan-dim: rgba(0,212,255,0.12);
+  --amber: #ff8c00;
+  --amber-dim: rgba(255,140,0,0.1);
+  --green: #00e676;
+  --green-dim: rgba(0,230,118,0.1);
+  --purple: #b388ff;
+  --purple-dim: rgba(179,136,255,0.1);
+  --red: #ff5252;
+  --text: #c8d6e8;
+  --text-bright: #e8f0fc;
+  --text-dim: #5a7a9a;
+  --sidebar-w: 280px;
+  --header-h: 60px;
+}
+*{box-sizing:border-box;margin:0;padding:0}
+html{scroll-behavior:smooth}
+body{background:var(--bg);color:var(--text);font-family:'Outfit',sans-serif;font-size:15px;line-height:1.6;overflow-x:hidden}
+::selection{background:var(--cyan);color:#000}
+::-webkit-scrollbar{width:6px;height:6px}
+::-webkit-scrollbar-track{background:var(--bg)}
+::-webkit-scrollbar-thumb{background:var(--border2);border-radius:3px}
+::-webkit-scrollbar-thumb:hover{background:var(--cyan)}
+
+/* HEADER */
+#header{position:fixed;top:0;left:0;right:0;height:var(--header-h);background:rgba(8,12,20,0.96);backdrop-filter:blur(12px);border-bottom:1px solid var(--border);z-index:100;display:flex;align-items:center;gap:0;padding:0}
+#logo{width:var(--sidebar-w);display:flex;align-items:center;gap:12px;padding:0 20px;border-right:1px solid var(--border);height:100%}
+#logo .mark{width:32px;height:32px;background:linear-gradient(135deg,var(--cyan),var(--amber));border-radius:6px;display:flex;align-items:center;justify-content:center;font-family:'JetBrains Mono',monospace;font-weight:700;font-size:14px;color:#000;flex-shrink:0}
+#logo .title{font-family:'Syne',sans-serif;font-weight:800;font-size:13px;color:var(--text-bright);line-height:1.2}
+#logo .subtitle{font-size:10px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;letter-spacing:0.08em}
+#search-bar{flex:1;padding:0 24px;display:flex;align-items:center;gap:12px}
+#search-bar input{width:100%;background:var(--surface);border:1px solid var(--border);border-radius:8px;padding:9px 16px 9px 40px;color:var(--text-bright);font-family:'Outfit',sans-serif;font-size:14px;outline:none;transition:border-color 0.2s}
+#search-bar input:focus{border-color:var(--cyan);box-shadow:0 0 0 3px var(--cyan-dim)}
+#search-bar input::placeholder{color:var(--text-dim)}
+.search-icon{position:absolute;left:36px;color:var(--text-dim);font-size:16px;pointer-events:none}
+.search-wrap{position:relative;flex:1;max-width:600px}
+#topic-count{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--text-dim);white-space:nowrap;padding-right:24px}
+#menu-btn{display:none;background:none;border:none;color:var(--text);padding:8px;cursor:pointer;margin-left:12px;font-size:22px}
+
+/* SIDEBAR */
+#sidebar{position:fixed;top:var(--header-h);left:0;width:var(--sidebar-w);height:calc(100vh - var(--header-h));overflow-y:auto;background:var(--surface);border-right:1px solid var(--border);padding:16px 0 40px;z-index:90}
+.side-label{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);letter-spacing:0.15em;text-transform:uppercase;padding:12px 20px 6px;margin-top:4px}
+.side-link{display:flex;align-items:center;gap:10px;padding:8px 20px;cursor:pointer;transition:all 0.15s;color:var(--text-dim);font-size:13.5px;font-weight:500;text-decoration:none;border-left:2px solid transparent}
+.side-link:hover{color:var(--text-bright);background:var(--surface2);border-left-color:var(--border2)}
+.side-link.active{color:var(--cyan);background:var(--cyan-dim);border-left-color:var(--cyan)}
+.side-link .num{font-family:'JetBrains Mono',monospace;font-size:10px;color:var(--text-dim);min-width:20px;opacity:0.6}
+.side-link.active .num{color:var(--cyan);opacity:1}
+.side-link .dot{width:5px;height:5px;border-radius:50%;background:currentColor;opacity:0.5;flex-shrink:0}
+.side-link.active .dot{opacity:1}
+
+/* MAIN */
+#main{margin-left:var(--sidebar-w);margin-top:var(--header-h);padding:40px 48px 80px;min-height:calc(100vh - var(--header-h))}
+
+/* HERO */
+#hero{margin-bottom:48px;padding:40px;background:linear-gradient(135deg,var(--surface) 0%,rgba(0,212,255,0.03) 100%);border:1px solid var(--border);border-radius:16px;position:relative;overflow:hidden}
+#hero::before{content:'';position:absolute;top:-60px;right:-60px;width:220px;height:220px;border-radius:50%;background:radial-gradient(circle,rgba(0,212,255,0.08),transparent 70%);pointer-events:none}
+#hero h1{font-family:'Syne',sans-serif;font-size:32px;font-weight:800;color:var(--text-bright);line-height:1.15;margin-bottom:8px}
+#hero h1 span{color:var(--cyan)}
+#hero p{color:var(--text-dim);font-size:15px;max-width:560px;margin-bottom:20px}
+.hero-tags{display:flex;gap:8px;flex-wrap:wrap}
+.hero-tag{background:var(--surface2);border:1px solid var(--border);border-radius:20px;padding:4px 12px;font-size:12px;color:var(--text-dim);font-family:'JetBrains Mono',monospace}
+.hero-tag.cyan{border-color:var(--cyan);color:var(--cyan);background:var(--cyan-dim)}
+
+/* TOPIC SECTIONS */
+.topic-section{margin-bottom:56px;scroll-margin-top:80px}
+.topic-header{display:flex;align-items:center;gap:16px;margin-bottom:24px;padding-bottom:16px;border-bottom:1px solid var(--border)}
+.topic-num{font-family:'JetBrains Mono',monospace;font-size:11px;color:var(--cyan);letter-spacing:0.1em;opacity:0.8}
+.topic-title{font-family:'Syne',sans-serif;font-size:22px;font-weight:700;color:var(--text-bright)}
+.topic-badge{margin-left:auto;background:var(--cyan-dim);color:var(--cyan);border:1px solid rgba(0,212,255,0.2);border-radius:4px;padding:2px 8px;font-family:'JetBrains Mono',monospace;font-size:10px;white-space:nowrap}
+
+/* FORMULA GRID */
+.formula-grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(340px,1fr));gap:14px}
+.formula-grid.wide{grid-template-columns:1fr}
+.formula-grid.two{grid-template-columns:1fr 1fr}
+
+/* FORMULA CARD */
+.fcard{background:var(--surface);border:1px solid var(--border);border-radius:10px;padding:16px 18px;transition:border-color 0.2s,transform 0.15s;position:relative;overflow:hidden}
+.fcard:hover{border-color:var(--border2);transform:translateY(-1px)}
+.fcard::before{content:'';position:absolute;top:0;left:0;width:3px;height:100%;background:var(--cyan);opacity:0}
+.fcard:hover::before{opacity:1}
+.fcard.amber::before{background:var(--amber)}
+.fcard.green::before{background:var(--green)}
+.fcard.purple::before{background:var(--purple)}
+.fcard:hover::before{opacity:1}
+
+.fcard-label{font-size:11.5px;color:var(--text-dim);text-transform:uppercase;letter-spacing:0.08em;font-family:'JetBrains Mono',monospace;margin-bottom:8px;display:flex;align-items:center;gap:6px}
+.fcard-label .tag{background:var(--surface2);border:1px solid var(--border);border-radius:3px;padding:1px 6px;font-size:10px}
+.fcard-formula{color:var(--text-bright);font-size:15px;line-height:1.8}
+.fcard-note{margin-top:8px;font-size:12px;color:var(--text-dim);line-height:1.5;border-top:1px solid var(--border);padding-top:8px}
+.fcard-note strong{color:var(--amber);font-weight:600}
+
+.fcard.highlight{background:linear-gradient(135deg,var(--surface),rgba(0,212,255,0.04));border-color:rgba(0,212,255,0.2)}
+.fcard.highlight-amber{background:linear-gradient(135deg,var(--surface),rgba(255,140,0,0.04));border-color:rgba(255,140,0,0.2)}
+
+/* TABLE */
+.ftable{width:100%;border-collapse:collapse;margin-bottom:16px}
+.ftable th{background:var(--surface2);color:var(--cyan);font-family:'JetBrains Mono',monospace;font-size:11px;letter-spacing:0.08em;text-transform:uppercase;padding:10px 14px;text-align:left;border-bottom:2px solid var(--border2)}
+.ftable td{padding:9px 14px;border-bottom:1px solid var(--border);color:var(--text);font-size:14px}
+.ftable tr:hover td{background:var(--surface2)}
+.ftable td:first-child{color:var(--text-bright);font-weight:500}
+.ftable td code{font-family:'JetBrains Mono',monospace;font-size:12px;color:var(--cyan);background:var(--cyan-dim);padding:1px 6px;border-radius:3px}
+.table-wrap{background:var(--surface);border:1px solid var(--border);border-radius:10px;overflow:hidden;margin-bottom:14px}
+.table-title{font-size:11px;color:var(--text-dim);font-family:'JetBrains Mono',monospace;text-transform:uppercase;letter-spacing:0.1em;padding:10px 14px;background:var(--surface2);border-bottom:1px solid var(--border)}
+
+/* SUBSECTION */
+.subsection{margin-bottom:28px}
+.sub-title{font-family:'Syne',sans-serif;font-size:15px;font-weight:700;color:var(--amber);margin-bottom:14px;display:flex;align-items:center;gap:8px}
+.sub-title::after{content:'';flex:1;height:1px;background:linear-gradient(90deg,var(--border),transparent)}
+.sub-title.cyan{color:var(--cyan)}
+.sub-title.green{color:var(--green)}
+.sub-title.purple{color:var(--purple)}
+
+/* KATEX overrides */
+.katex{font-size:1em}
+.katex-display{margin:6px 0;overflow-x:auto}
+.katex-display>.katex{font-size:1.05em}
+
+/* NO RESULTS */
+#no-results{display:none;text-align:center;padding:60px 20px;color:var(--text-dim)}
+#no-results h3{font-family:'Syne',sans-serif;color:var(--text-bright);margin-bottom:8px}
+
+/* HIGHLIGHT */
+.hl{background:rgba(0,212,255,0.15);border-radius:2px;padding:0 2px;color:var(--cyan)}
+
+/* RESPONSIVE */
+@media(max-width:900px){
+  #sidebar{transform:translateX(-100%);transition:transform 0.3s}
+  #sidebar.open{transform:translateX(0);box-shadow:4px 0 24px rgba(0,0,0,0.5)}
+  #main{margin-left:0;padding:24px 20px 60px}
+  #logo{display:none}
+  #menu-btn{display:flex}
+  .formula-grid.two{grid-template-columns:1fr}
+  #hero h1{font-size:24px}
+  #main{padding-top:28px}
+}
+@media(max-width:600px){
+  .formula-grid{grid-template-columns:1fr}
+  #main{padding:20px 14px 60px}
+  .topic-title{font-size:18px}
+}
+
+/* SCROLL PROGRESS */
+#progress{position:fixed;top:var(--header-h);left:0;height:2px;background:linear-gradient(90deg,var(--cyan),var(--amber));width:0%;z-index:99;transition:width 0.1s}
+
+/* BACK TO TOP */
+#btt{position:fixed;bottom:30px;right:30px;width:42px;height:42px;background:var(--surface2);border:1px solid var(--border2);border-radius:8px;display:flex;align-items:center;justify-content:center;cursor:pointer;color:var(--text-dim);font-size:18px;transition:all 0.2s;opacity:0;transform:translateY(10px);z-index:80}
+#btt.visible{opacity:1;transform:translateY(0)}
+#btt:hover{background:var(--cyan-dim);border-color:var(--cyan);color:var(--cyan)}
+
+/* OVERLAY */
+#overlay{display:none;position:fixed;inset:0;background:rgba(0,0,0,0.6);z-index:85}
+#overlay.show{display:block}
+
+/* COPY BUTTON */
+.fcard-actions{position:absolute;top:8px;right:8px;opacity:0;transition:opacity 0.2s}
+.fcard:hover .fcard-actions{opacity:1}
+.copy-btn{background:var(--surface2);border:1px solid var(--border);border-radius:4px;padding:3px 7px;font-size:10px;color:var(--text-dim);cursor:pointer;font-family:'JetBrains Mono',monospace;transition:all 0.15s}
+.copy-btn:hover{background:var(--cyan-dim);color:var(--cyan);border-color:var(--cyan)}
+</style>
+</head>
+<body>
+
+<div id="progress"></div>
+<div id="overlay" onclick="closeSidebar()"></div>
+
+<!-- HEADER -->
+<header id="header">
+  <div id="logo">
+    <div class="mark">GS</div>
+    <div>
+      <div class="title">GYAAN SUTRA</div>
+      <div class="subtitle">JEE PHYSICS ATLAS</div>
+    </div>
+  </div>
+  <button id="menu-btn" onclick="toggleSidebar()">☰</button>
+  <div id="search-bar">
+    <div class="search-wrap">
+      <span class="search-icon">⌕</span>
+      <input type="text" id="searchInput" placeholder="Search formulas, topics, quantities..." oninput="searchFormulas(this.value)">
+    </div>
+    <div id="topic-count">29 Topics · 250+ Formulas</div>
+  </div>
+</header>
+
+<!-- SIDEBAR -->
+<nav id="sidebar">
+  <div class="side-label">Topics</div>
+</nav>
+
+<!-- BACK TO TOP -->
+<div id="btt" onclick="window.scrollTo({top:0,behavior:'smooth'})">↑</div>
+
+<!-- MAIN CONTENT -->
+<main id="main">
+
+<div id="hero">
+  <h1>Physics Formula <span>Atlas</span></h1>
+  <p>Complete formula reference for JEE Mains & Advanced. All 29 chapters, every key formula, zero fluff.</p>
+  <div class="hero-tags">
+    <span class="hero-tag cyan">JEE Mains 2025</span>
+    <span class="hero-tag">29 Chapters</span>
+    <span class="hero-tag">Searchable</span>
+    <span class="hero-tag">KaTeX Rendered</span>
+    <span class="hero-tag">GYAAN SUTRA</span>
+  </div>
+</div>
+
+<div id="no-results">
+  <h3>No formulas found</h3>
+  <p>Try searching for a different term</p>
+</div>
+
+<div id="content">
+
+<!-- ===================== 1. UNITS & DIMENSIONS ===================== -->
+<section class="topic-section" id="sec-1">
+<div class="topic-header">
+  <span class="topic-num">01</span>
+  <h2 class="topic-title">Units &amp; Dimensions</h2>
+  <span class="topic-badge">Fundamentals</span>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Fundamental SI Units</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Physical Quantity</th><th>SI Unit</th><th>Symbol</th></tr>
+      <tr><td>Length</td><td>Metre</td><td><code>m</code></td></tr>
+      <tr><td>Mass</td><td>Kilogram</td><td><code>kg</code></td></tr>
+      <tr><td>Time</td><td>Second</td><td><code>s</code></td></tr>
+      <tr><td>Electric Current</td><td>Ampere</td><td><code>A</code></td></tr>
+      <tr><td>Temperature</td><td>Kelvin</td><td><code>K</code></td></tr>
+      <tr><td>Luminous Intensity</td><td>Candela</td><td><code>cd</code></td></tr>
+      <tr><td>Amount of Substance</td><td>Mole</td><td><code>mol</code></td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Supplementary Units</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Plane Angle</div>
+      <div class="fcard-formula">Radian (rad)</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Solid Angle</div>
+      <div class="fcard-formula">Steradian (sr)</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Metric Prefixes</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Prefix</th><th>Symbol</th><th>Value</th></tr>
+      <tr><td>Centi</td><td><code>c</code></td><td>$10^{-2}$</td></tr>
+      <tr><td>Milli</td><td><code>m</code></td><td>$10^{-3}$</td></tr>
+      <tr><td>Micro</td><td><code>µ</code></td><td>$10^{-6}$</td></tr>
+      <tr><td>Nano</td><td><code>n</code></td><td>$10^{-9}$</td></tr>
+      <tr><td>Pico</td><td><code>p</code></td><td>$10^{-12}$</td></tr>
+      <tr><td>Kilo</td><td><code>K</code></td><td>$10^{3}$</td></tr>
+      <tr><td>Mega</td><td><code>M</code></td><td>$10^{6}$</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 2. RECTILINEAR MOTION ===================== -->
+<section class="topic-section" id="sec-2">
+<div class="topic-header">
+  <span class="topic-num">02</span>
+  <h2 class="topic-title">Rectilinear Motion</h2>
+  <span class="topic-badge">Kinematics</span>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Definitions</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Average Velocity</div>
+      <div class="fcard-formula">$$\bar{v} = \frac{\Delta r}{\Delta t} = \frac{\text{Total Displacement}}{\text{Total Time}}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Average Speed</div>
+      <div class="fcard-formula">$$\text{Avg Speed} = \frac{\text{Total Distance}}{\text{Total Time}}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Instantaneous Velocity</div>
+      <div class="fcard-formula">$$\vec{v} = \lim_{\Delta t \to 0} \frac{\Delta \vec{r}}{\Delta t} = \frac{d\vec{r}}{dt}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Average Acceleration</div>
+      <div class="fcard-formula">$$\vec{a}_{av} = \frac{\Delta \vec{v}}{\Delta t} = \frac{\vec{v}_f - \vec{v}_i}{t}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Instantaneous Acceleration</div>
+      <div class="fcard-formula">$$\vec{a} = \frac{d\vec{v}}{dt} = \lim_{\Delta t \to 0} \frac{\Delta \vec{v}}{\Delta t}$$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title amber">Equations of Motion (Constant Acceleration)</div>
+  <div class="formula-grid">
+    <div class="fcard highlight">
+      <div class="fcard-label">First Equation</div>
+      <div class="fcard-formula">$$v = u + at$$</div>
+    </div>
+    <div class="fcard highlight">
+      <div class="fcard-label">Second Equation</div>
+      <div class="fcard-formula">$$s = ut + \frac{1}{2}at^2 \quad \Rightarrow \quad x_f = x_i + ut + \frac{1}{2}at^2$$</div>
+    </div>
+    <div class="fcard highlight">
+      <div class="fcard-label">Third Equation</div>
+      <div class="fcard-formula">$$v^2 = u^2 + 2as$$</div>
+    </div>
+    <div class="fcard highlight">
+      <div class="fcard-label">Average Velocity Form</div>
+      <div class="fcard-formula">$$s = \frac{(u+v)}{2} \cdot t$$</div>
+    </div>
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Distance in n-th Second</div>
+      <div class="fcard-formula">$$s_n = u + \frac{a}{2}(2n - 1)$$</div>
+      <div class="fcard-note"><strong>Note:</strong> $s_n$ = displacement in the $n$-th second only, not cumulative</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Free Fall (u = 0, taking upward as positive)</div>
+  <div class="formula-grid">
+    <div class="fcard amber">
+      <div class="fcard-label">Velocity</div>
+      <div class="fcard-formula">$v = -gt$</div>
+    </div>
+    <div class="fcard amber">
+      <div class="fcard-label">Displacement</div>
+      <div class="fcard-formula">$s = -\frac{1}{2}gt^2$</div>
+    </div>
+    <div class="fcard amber">
+      <div class="fcard-label">Velocity-Displacement</div>
+      <div class="fcard-formula">$v^2 = -2gs$</div>
+    </div>
+    <div class="fcard amber">
+      <div class="fcard-label">n-th second</div>
+      <div class="fcard-formula">$s_n = -\frac{g}{2}(2n-1)$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Maxima &amp; Minima Conditions</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Maximum</div>
+      <div class="fcard-formula">$\dfrac{dy}{dx} = 0$ and $\dfrac{d}{dx}\!\left(\dfrac{dy}{dx}\right) < 0$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Minimum</div>
+      <div class="fcard-formula">$\dfrac{dy}{dx} = 0$ and $\dfrac{d}{dx}\!\left(\dfrac{dy}{dx}\right) > 0$</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 3. PROJECTILE MOTION ===================== -->
+<section class="topic-section" id="sec-3">
+<div class="topic-header">
+  <span class="topic-num">03</span>
+  <h2 class="topic-title">Projectile Motion &amp; Vectors</h2>
+  <span class="topic-badge">Kinematics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Time of Flight</div>
+    <div class="fcard-formula">$$T = \frac{2u\sin\theta}{g}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Horizontal Range</div>
+    <div class="fcard-formula">$$R = \frac{u^2 \sin 2\theta}{g}$$</div>
+    <div class="fcard-note"><strong>Max Range</strong> at $\theta = 45°$: $R_{max} = \dfrac{u^2}{g}$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Maximum Height</div>
+    <div class="fcard-formula">$$H = \frac{u^2 \sin^2\theta}{2g}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Trajectory Equation (Path)</div>
+    <div class="fcard-formula">$$y = x\tan\theta - \frac{gx^2}{2u^2\cos^2\theta} = x\tan\theta\!\left(1 - \frac{x}{R}\right)$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title amber">Projection on Inclined Plane</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Quantity</th><th>Up the Incline</th><th>Down the Incline</th></tr>
+      <tr><td>Range</td><td>$\dfrac{2u^2\sin\alpha\cos(\alpha+\beta)}{g\cos^2\beta}$</td><td>$\dfrac{2u^2\sin\alpha\cos(\alpha-\beta)}{g\cos^2\beta}$</td></tr>
+      <tr><td>Time of Flight</td><td>$\dfrac{2u\sin\alpha}{g\cos\beta}$</td><td>$\dfrac{2u\sin\alpha}{g\cos\beta}$</td></tr>
+      <tr><td>Angle for Max Range</td><td>$\dfrac{\pi}{4} - \dfrac{\beta}{2}$</td><td>$\dfrac{\pi}{4} + \dfrac{\beta}{2}$</td></tr>
+      <tr><td>Maximum Range</td><td>$\dfrac{u^2}{g(1+\sin\beta)}$</td><td>$\dfrac{u^2}{g(1-\sin\beta)}$</td></tr>
+    </table>
+  </div>
+  <div class="fcard-note" style="padding:10px;background:var(--surface);border:1px solid var(--border);border-radius:8px">$\alpha$ = angle of projection w.r.t. incline surface; $\beta$ = angle of incline with horizontal</div>
+</div>
+</section>
+
+<!-- ===================== 4. RELATIVE MOTION ===================== -->
+<section class="topic-section" id="sec-4">
+<div class="topic-header">
+  <span class="topic-num">04</span>
+  <h2 class="topic-title">Relative Motion</h2>
+  <span class="topic-badge">Kinematics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Relative Velocity</div>
+    <div class="fcard-formula">$$\vec{v}_{AB} = \vec{v}_A - \vec{v}_B$$</div>
+    <div class="fcard-note">Velocity of A with respect to B</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Relative Acceleration</div>
+    <div class="fcard-formula">$$\vec{a}_{AB} = \vec{a}_A - \vec{a}_B$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Relative Displacement</div>
+    <div class="fcard-formula">$$x_{BA} = x_B - x_A$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">River Crossing</div>
+  <div class="formula-grid">
+    <div class="fcard amber">
+      <div class="fcard-label">Shortest Time</div>
+      <div class="fcard-formula">$$t_{min} = \frac{d}{v_{mR}}, \quad v_x = v_R, \quad v_m = \sqrt{v_{mR}^2 + v_R^2}$$</div>
+      <div class="fcard-note">Boat pointed perpendicular to river. Drift $= v_R \cdot t$</div>
+    </div>
+    <div class="fcard amber">
+      <div class="fcard-label">Shortest Path (Zero Drift)</div>
+      <div class="fcard-formula">$$\sin\theta = \frac{v_R}{v_{mR}}, \quad v_y = \sqrt{v_{mR}^2 - v_R^2}$$</div>
+      <div class="fcard-note">Condition: $v_{mR} > v_R$. Time $= \dfrac{d}{\sqrt{v_{mR}^2 - v_R^2}}$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Rain Problems</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Velocity of Rain w.r.t. Man</div>
+      <div class="fcard-formula">$$\vec{v}_{Rm} = \vec{v}_R - \vec{v}_m, \quad |\vec{v}_{Rm}| = \sqrt{v_R^2 + v_m^2}$$</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 5. NEWTON'S LAWS ===================== -->
+<section class="topic-section" id="sec-5">
+<div class="topic-header">
+  <span class="topic-num">05</span>
+  <h2 class="topic-title">Newton's Laws of Motion</h2>
+  <span class="topic-badge">Dynamics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Newton's 2nd Law</div>
+    <div class="fcard-formula">$$\vec{F} = \frac{d\vec{p}}{dt} = m\vec{a}$$</div>
+    <div class="fcard-note">$F_x = ma_x$, $F_y = ma_y$, $F_z = ma_z$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Newton's 3rd Law</div>
+    <div class="fcard-formula">$$\vec{F}_{AB} = -\vec{F}_{BA}$$</div>
+    <div class="fcard-note">Forces are equal in magnitude, opposite in direction, act on different bodies</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Spring Force</div>
+    <div class="fcard-formula">$$F = -kx$$</div>
+    <div class="fcard-note">$x$ = deformation from natural length; $k$ = spring constant</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Spring Property</div>
+    <div class="fcard-formula">$$k \times \ell = \text{constant}$$</div>
+    <div class="fcard-note">$\ell$ = natural length of spring</div>
+  </div>
+  <div class="fcard amber">
+    <div class="fcard-label">Spring Cut in Ratio m : n</div>
+    <div class="fcard-formula">$$k_1 = \frac{(m+n)}{m}\,k, \quad k_2 = \frac{(m+n)}{n}\,k$$</div>
+    <div class="fcard-note">$k_1\ell_1 = k_2\ell_2 = k\ell$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Series Spring Combination</div>
+    <div class="fcard-formula">$$\frac{1}{k_{eq}} = \frac{1}{k_1} + \frac{1}{k_2} + \cdots$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Parallel Spring Combination</div>
+    <div class="fcard-formula">$$k_{eq} = k_1 + k_2 + k_3 + \cdots$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Atwood Machine</div>
+    <div class="fcard-formula">$$a = \frac{(m_1-m_2)g}{m_1+m_2}, \quad T = \frac{2m_1 m_2\, g}{m_1+m_2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Pulley Constraint (Movable Pulley)</div>
+    <div class="fcard-formula">$$V_P = \frac{V_1+V_2}{2}, \quad a_P = \frac{a_1+a_2}{2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Newton's Law for System</div>
+    <div class="fcard-formula">$$\vec{F}_{ext} = m_1\vec{a}_1 + m_2\vec{a}_2 + \cdots$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Non-Inertial Frame (Pseudo Force)</div>
+    <div class="fcard-formula">$$\vec{F}_{pseudo} = -m\vec{a}_{frame}$$</div>
+    <div class="fcard-note">Net force in non-inertial frame = Real forces + Pseudo force</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 6. FRICTION ===================== -->
+<section class="topic-section" id="sec-6">
+<div class="topic-header">
+  <span class="topic-num">06</span>
+  <h2 class="topic-title">Friction</h2>
+  <span class="topic-badge">Dynamics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Kinetic Friction</div>
+    <div class="fcard-formula">$$f_k = \mu_k N$$</div>
+    <div class="fcard-note">$\mu_k$ = coefficient of kinetic friction; always acts opposing relative motion</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Static Friction (Self-adjusting)</div>
+    <div class="fcard-formula">$$0 \leq f_s \leq f_{s,max} = \mu_s N$$</div>
+    <div class="fcard-note">Limiting friction $f_{max} = \mu_s N$; always $\mu_s > \mu_k$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Normal Force (Flat Surface)</div>
+    <div class="fcard-formula">$$N = mg\cos\theta$$</div>
+    <div class="fcard-note">$\theta$ = angle of inclined surface with horizontal</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 7. WORK, POWER & ENERGY ===================== -->
+<section class="topic-section" id="sec-7">
+<div class="topic-header">
+  <span class="topic-num">07</span>
+  <h2 class="topic-title">Work, Power &amp; Energy</h2>
+  <span class="topic-badge">Energy</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Work Done (Constant Force)</div>
+    <div class="fcard-formula">$$W = \vec{F} \cdot \vec{S} = FS\cos\theta$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Work Done (Variable Force)</div>
+    <div class="fcard-formula">$$W = \int \vec{F} \cdot d\vec{s}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Kinetic Energy</div>
+    <div class="fcard-formula">$$K = \frac{1}{2}mv^2 = \frac{p^2}{2m}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Momentum–KE Relation</div>
+    <div class="fcard-formula">$$p = \sqrt{2mK}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Conservative Force &amp; PE</div>
+    <div class="fcard-formula">$$F = -\frac{\partial U}{\partial r}, \quad U_2 - U_1 = -\int_{r_1}^{r_2} \vec{F}\cdot d\vec{r}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Work-Energy Theorem</div>
+    <div class="fcard-formula">$$W_C + W_{NC} + W_{PS} = \Delta K$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Modified Work-Energy Theorem</div>
+    <div class="fcard-formula">$$W_{NC} + W_{PS} = \Delta K + \Delta U = \Delta E$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Average Power</div>
+    <div class="fcard-formula">$$P = \frac{W}{t} = \vec{F}\cdot\vec{v}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 8. CIRCULAR MOTION ===================== -->
+<section class="topic-section" id="sec-8">
+<div class="topic-header">
+  <span class="topic-num">08</span>
+  <h2 class="topic-title">Circular Motion</h2>
+  <span class="topic-badge">Dynamics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard">
+    <div class="fcard-label">Angular Velocity</div>
+    <div class="fcard-formula">$$\omega = \frac{d\theta}{dt}, \quad \bar{\omega} = \frac{\Delta\theta}{\Delta t}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Angular Acceleration</div>
+    <div class="fcard-formula">$$\alpha = \frac{d\omega}{dt} = \omega\frac{d\omega}{d\theta}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Speed–Angular Velocity</div>
+    <div class="fcard-formula">$$v = r\omega, \quad \vec{v} = \vec{\omega}\times\vec{r}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Centripetal Acceleration</div>
+    <div class="fcard-formula">$$a_r = \frac{v^2}{r} = \omega^2 r$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Tangential Acceleration</div>
+    <div class="fcard-formula">$$a_t = \frac{dv}{dt} = r\alpha$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Total Acceleration</div>
+    <div class="fcard-formula">$$a = \sqrt{a_t^2 + a_r^2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Radius of Curvature</div>
+    <div class="fcard-formula">$$R = \frac{v^2}{a_\perp} = \frac{mv^2}{F_\perp} = \frac{\left[1+\left(\frac{dy}{dx}\right)^2\right]^{3/2}}{\left|\frac{d^2y}{dx^2}\right|}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Concave Bridge (Normal Force)</div>
+    <div class="fcard-formula">$$N = mg\cos\theta + \frac{mv^2}{r}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Convex Bridge (Normal Force)</div>
+    <div class="fcard-formula">$$N = mg\cos\theta - \frac{mv^2}{r}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Safe Speed on Level Road</div>
+    <div class="fcard-formula">$$v_{safe} \leq \sqrt{\mu g r}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Max Angular Speed on Rotating Platform</div>
+    <div class="fcard-formula">$$\omega_{max} = \sqrt{\frac{\mu g}{r}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Bending of Cyclist / Banking (Frictionless)</div>
+    <div class="fcard-formula">$$\tan\theta = \frac{v^2}{rg}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Banking with Friction</div>
+    <div class="fcard-formula">$$\tan\theta = \frac{v^2 - \mu rg}{rg + \mu v^2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Max Speed on Banked Frictional Road</div>
+    <div class="fcard-formula">$$v_{max} = \sqrt{\frac{rg(\tan\theta + \mu)}{1 - \mu\tan\theta}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Min Speed on Banked Frictional Road</div>
+    <div class="fcard-formula">$$v_{min} = \sqrt{\frac{rg(\tan\theta - \mu)}{1 + \mu\tan\theta}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Centrifugal Force (Pseudo Force)</div>
+    <div class="fcard-formula">$$f = m\omega^2 r \quad \text{(outward)}$$</div>
+  </div>
+  <div class="fcard amber">
+    <div class="fcard-label">Effect of Earth's Rotation on g</div>
+    <div class="fcard-formula">$$N = mg - m\omega_E^2 R\cos^2\lambda$$</div>
+    <div class="fcard-note">$\lambda$ = latitude; $N$ = apparent weight</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Conical Pendulum</div>
+    <div class="fcard-formula">$$T = 2\pi\sqrt{\frac{L\cos\theta}{g}}, \quad \omega = \sqrt{\frac{g}{L\cos\theta}}$$</div>
+    <div class="fcard-note">$T\cos\theta = mg$; $T\sin\theta = m\omega^2 r$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Min Speed for Vertical Loop (Bottom)</div>
+    <div class="fcard-formula">$$v_{min} = \sqrt{5gL}$$</div>
+    <div class="fcard-note">For completing the circle; at top: $v_{top,min} = \sqrt{gL}$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Angular Equations of Motion ($\alpha$ = const)</div>
+    <div class="fcard-formula">$$\omega = \omega_0 + \alpha t, \quad \theta = \omega_0 t + \tfrac{1}{2}\alpha t^2, \quad \omega^2 = \omega_0^2 + 2\alpha\theta$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 9. CENTRE OF MASS ===================== -->
+<section class="topic-section" id="sec-9">
+<div class="topic-header">
+  <span class="topic-num">09</span>
+  <h2 class="topic-title">Centre of Mass</h2>
+  <span class="topic-badge">System of Particles</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">CM of Discrete System</div>
+    <div class="fcard-formula">$$\vec{r}_{cm} = \frac{\sum m_i \vec{r}_i}{\sum m_i} = \frac{m_1\vec{r}_1 + m_2\vec{r}_2 + \cdots}{M}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">CM of Continuous Body</div>
+    <div class="fcard-formula">$$x_{cm} = \frac{\int x\,dm}{\int dm}, \quad y_{cm} = \frac{\int y\,dm}{\int dm}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Velocity of CM</div>
+    <div class="fcard-formula">$$\vec{v}_{cm} = \frac{m_1\vec{v}_1 + m_2\vec{v}_2 + \cdots}{M} = \frac{\vec{P}_{sys}}{M}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Newton's 2nd Law for System</div>
+    <div class="fcard-formula">$$\vec{F}_{ext} = M\vec{a}_{cm}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Impulse-Momentum Theorem</div>
+    <div class="fcard-formula">$$\vec{J} = \int_{t_i}^{t_f}\vec{F}\,dt = \Delta\vec{p}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Coefficient of Restitution</div>
+    <div class="fcard-formula">$$e = \frac{\text{Velocity of Separation (along LOI)}}{\text{Velocity of Approach (along LOI)}}$$</div>
+    <div class="fcard-note"><strong>e=1</strong>: Elastic | <strong>e=0</strong>: Perfectly Inelastic | <strong>0&lt;e&lt;1</strong>: Inelastic</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Variable Mass / Thrust Force</div>
+    <div class="fcard-formula">$$\vec{F}_t = \vec{v}_{rel}\frac{dm}{dt}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Rocket Propulsion (gravity ignored, u=0)</div>
+    <div class="fcard-formula">$$v = v_r \ln\!\left(\frac{m_0}{m}\right)$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">CM Positions of Common Bodies</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Body</th><th>CM Position (from base/center)</th></tr>
+      <tr><td>Rectangular plate</td><td>$x_c = b/2,\; y_c = L/2$</td></tr>
+      <tr><td>Triangular plate</td><td>$y_c = h/3$ (from base — at centroid)</td></tr>
+      <tr><td>Semi-circular ring</td><td>$y_c = 2R/\pi$</td></tr>
+      <tr><td>Semi-circular disc</td><td>$y_c = 4R/(3\pi)$</td></tr>
+      <tr><td>Hemispherical shell</td><td>$y_c = R/2$</td></tr>
+      <tr><td>Solid hemisphere</td><td>$y_c = 3R/8$</td></tr>
+      <tr><td>Solid cone</td><td>$y_c = h/4$ (from base)</td></tr>
+      <tr><td>Hollow cone</td><td>$y_c = h/3$ (from base)</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 10. RIGID BODY DYNAMICS ===================== -->
+<section class="topic-section" id="sec-10">
+<div class="topic-header">
+  <span class="topic-num">10</span>
+  <h2 class="topic-title">Rigid Body Dynamics</h2>
+  <span class="topic-badge">Rotational Motion</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Moment of Inertia (Discrete)</div>
+    <div class="fcard-formula">$$I = \sum_{i} m_i r_i^2$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Moment of Inertia (Continuous)</div>
+    <div class="fcard-formula">$$I = \int r^2\,dm$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Parallel Axis Theorem</div>
+    <div class="fcard-formula">$$I = I_{cm} + Md^2$$</div>
+    <div class="fcard-note">Applicable to any body; $d$ = distance between axes</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Perpendicular Axis Theorem</div>
+    <div class="fcard-formula">$$I_z = I_x + I_y$$</div>
+    <div class="fcard-note">Only for 2D (plane lamina) objects lying in the x-y plane</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Radius of Gyration</div>
+    <div class="fcard-formula">$$I = MK^2 \implies K = \sqrt{\frac{I}{M}}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Torque</div>
+    <div class="fcard-formula">$$\vec{\tau} = \vec{r}\times\vec{F}, \quad |\tau| = rF\sin\phi$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Newton's 2nd Law (Rotation)</div>
+    <div class="fcard-formula">$$\tau_{ext} = I\alpha$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Angular Momentum</div>
+    <div class="fcard-formula">$$\vec{L} = \vec{r}\times\vec{p} = I\vec{\omega}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Conservation of Angular Momentum</div>
+    <div class="fcard-formula">$$\text{If } \tau_{ext} = 0 \implies \vec{L} = I\omega = \text{constant}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Rotational KE</div>
+    <div class="fcard-formula">$$KE_{rot} = \frac{1}{2}I\omega^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Torque–Angular Momentum Relation</div>
+    <div class="fcard-formula">$$\vec{\tau} = \frac{d\vec{L}}{dt}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Total KE (Translation + Rotation)</div>
+    <div class="fcard-formula">$$KE_{total} = \frac{1}{2}Mv_{cm}^2 + \frac{1}{2}I_{cm}\omega^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Rotational Equilibrium</div>
+    <div class="fcard-formula">$$\sum F_x = 0, \quad \sum F_y = 0, \quad \sum \tau_z = 0$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Angular Momentum about Axis AB</div>
+    <div class="fcard-formula">$$L_{AB} = L_{cm} + M v_{cm} r_{cm}$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Moments of Inertia — Key Results</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Body</th><th>Axis</th><th>I</th></tr>
+      <tr><td>Solid Sphere (uniform)</td><td>Diameter</td><td>$\dfrac{2}{5}MR^2$</td></tr>
+      <tr><td>Hollow Sphere (uniform)</td><td>Diameter</td><td>$\dfrac{2}{3}MR^2$</td></tr>
+      <tr><td>Ring (uniform)</td><td>Central ⊥ to plane</td><td>$MR^2$</td></tr>
+      <tr><td>Ring (uniform)</td><td>Diameter</td><td>$\dfrac{1}{2}MR^2$</td></tr>
+      <tr><td>Disc (uniform)</td><td>Central ⊥ to plane</td><td>$\dfrac{1}{2}MR^2$</td></tr>
+      <tr><td>Disc (uniform)</td><td>Diameter</td><td>$\dfrac{1}{4}MR^2$</td></tr>
+      <tr><td>Solid Cylinder (uniform)</td><td>Own axis</td><td>$\dfrac{1}{2}MR^2$</td></tr>
+      <tr><td>Hollow Cylinder (uniform)</td><td>Own axis</td><td>$MR^2$</td></tr>
+      <tr><td>Thin Rod (uniform)</td><td>Through center, ⊥ to rod</td><td>$\dfrac{ML^2}{12}$</td></tr>
+      <tr><td>Thin Rod (uniform)</td><td>Through end, ⊥ to rod</td><td>$\dfrac{ML^2}{3}$</td></tr>
+      <tr><td>Square Plate (side $a$)</td><td>Central, ⊥ to plane</td><td>$\dfrac{Ma^2}{6}$</td></tr>
+      <tr><td>Square Plate (side $a$)</td><td>Side (AB = CD = EF)</td><td>$\dfrac{Ma^2}{12}$</td></tr>
+      <tr><td>Rectangular Plate ($a\times b$)</td><td>Central, ⊥ to plane</td><td>$\dfrac{M(a^2+b^2)}{12}$</td></tr>
+      <tr><td>Cuboid ($a\times b\times c$)</td><td>Central</td><td>$\dfrac{M(a^2+b^2)}{12}$</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 11. SHM ===================== -->
+<section class="topic-section" id="sec-11">
+<div class="topic-header">
+  <span class="topic-num">11</span>
+  <h2 class="topic-title">Simple Harmonic Motion</h2>
+  <span class="topic-badge">Oscillations</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">SHM Condition</div>
+    <div class="fcard-formula">$$F = -kx \implies a = -\omega^2 x$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">General Solution</div>
+    <div class="fcard-formula">$$x = A\sin(\omega t + \phi)$$</div>
+    <div class="fcard-note">$A$ = amplitude; $\phi$ = initial phase; $\omega$ = angular frequency</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Angular Frequency &amp; Period</div>
+    <div class="fcard-formula">$$\omega = \sqrt{\frac{k}{m}} = \frac{2\pi}{T} = 2\pi f, \quad T = 2\pi\sqrt{\frac{m}{k}}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Velocity</div>
+    <div class="fcard-formula">$$v = \omega\sqrt{A^2 - x^2}$$</div>
+    <div class="fcard-note">Max at $x=0$: $v_{max} = A\omega$; zero at $x = \pm A$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Kinetic Energy</div>
+    <div class="fcard-formula">$$KE = \frac{1}{2}m\omega^2(A^2 - x^2) = \frac{1}{2}k(A^2-x^2)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Potential Energy</div>
+    <div class="fcard-formula">$$PE = \frac{1}{2}kx^2 = \frac{1}{2}m\omega^2 x^2$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Total Mechanical Energy</div>
+    <div class="fcard-formula">$$E = KE + PE = \frac{1}{2}kA^2 = \frac{1}{2}m\omega^2 A^2 = \text{constant}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Spring–Mass System (horizontal/vertical)</div>
+    <div class="fcard-formula">$$T = 2\pi\sqrt{\frac{m}{k}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Two Masses on Spring (Reduced Mass)</div>
+    <div class="fcard-formula">$$T = 2\pi\sqrt{\frac{\mu}{k}}, \quad \mu = \frac{m_1 m_2}{m_1+m_2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Series Springs</div>
+    <div class="fcard-formula">$$\frac{1}{k_{eq}} = \frac{1}{k_1} + \frac{1}{k_2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Parallel Springs</div>
+    <div class="fcard-formula">$$k_{eq} = k_1 + k_2$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Simple Pendulum</div>
+    <div class="fcard-formula">$$T = 2\pi\sqrt{\frac{\ell}{g}} = 2\pi\sqrt{\frac{\ell}{g_{eff}}} \quad\text{(accelerating frame)}$$</div>
+    <div class="fcard-note">$g_{eff}$ = net effective gravity in accelerating reference frame</div>
+  </div>
+  <div class="fcard amber">
+    <div class="fcard-label">Compound Pendulum (Physical Pendulum)</div>
+    <div class="fcard-formula">$$T = 2\pi\sqrt{\frac{I}{mg\ell}}, \quad I = I_{cm} + m\ell^2$$</div>
+    <div class="fcard-note">$\ell$ = distance between pivot and CM</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Torsional Pendulum</div>
+    <div class="fcard-formula">$$T = 2\pi\sqrt{\frac{I}{C}}$$</div>
+    <div class="fcard-note">$C$ = torsional constant of the wire</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Superposition of SHMs (Same Direction)</div>
+    <div class="fcard-formula">$$A = \sqrt{A_1^2 + A_2^2 + 2A_1 A_2\cos\delta}, \quad \tan\phi = \frac{A_2\sin\delta}{A_1 + A_2\cos\delta}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Damped Oscillations (Small damping)</div>
+    <div class="fcard-formula">$$x = A_0 e^{-bt/2m}\sin(\omega't + \phi), \quad \omega' = \sqrt{\frac{k}{m}-\frac{b^2}{4m^2}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Energy in Damped Oscillation</div>
+    <div class="fcard-formula">$$E(t) = \frac{1}{2}kA_0^2\,e^{-bt/m}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Quality Factor (Q value)</div>
+    <div class="fcard-formula">$$Q = \frac{\omega'}{2\gamma} \quad \text{where } \gamma = \frac{b}{2m}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Forced Oscillation (Resonance)</div>
+    <div class="fcard-formula">$$A = \frac{F_0/m}{\sqrt{(\omega_0^2 - \omega_d^2)^2 + b^2\omega_d^2/m^2}}$$</div>
+    <div class="fcard-note">At resonance $\omega_d \approx \omega_0$: $A_{max} = \dfrac{F_0}{b\omega_0}$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 12. STRING WAVES ===================== -->
+<section class="topic-section" id="sec-12">
+<div class="topic-header">
+  <span class="topic-num">12</span>
+  <h2 class="topic-title">String Waves</h2>
+  <span class="topic-badge">Waves</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Wave Equation</div>
+    <div class="fcard-formula">$$\frac{\partial^2 y}{\partial t^2} = v^2 \frac{\partial^2 y}{\partial x^2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Travelling Wave</div>
+    <div class="fcard-formula">$$y(x,t) = A\sin(\omega t \pm kx + \phi_0)$$</div>
+    <div class="fcard-note">$-kx$: wave in $+x$ direction; $+kx$: wave in $-x$ direction</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Speed of Transverse Wave on String</div>
+    <div class="fcard-formula">$$v = \sqrt{\frac{T}{\mu}}, \quad \mu = \frac{m}{L}\ \text{(linear mass density)}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Wave Number &amp; Phase</div>
+    <div class="fcard-formula">$$k = \frac{2\pi}{\lambda} = \frac{\omega}{v}, \quad \Delta\phi = \frac{2\pi}{\lambda}\Delta x = \frac{2\pi}{T}\Delta t$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Average Power Transmitted</div>
+    <div class="fcard-formula">$$P = 2\pi^2 f^2 A^2 \mu v$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Intensity</div>
+    <div class="fcard-formula">$$I = 2\pi^2 f^2 A^2 \rho v$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Reflected &amp; Transmitted Amplitudes</div>
+    <div class="fcard-formula">$$A_r = \frac{k_1 - k_2}{k_1 + k_2}A_i, \quad A_t = \frac{2k_1}{k_1 + k_2}A_i$$</div>
+    <div class="fcard-note">Phase change of $\pi$ on reflection from denser medium</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Standing Wave (Fixed Both Ends)</div>
+    <div class="fcard-formula">$$f_n = \frac{n}{2L}\sqrt{\frac{T}{\mu}}, \quad n = 1, 2, 3, \ldots$$</div>
+    <div class="fcard-note">$f_1$ = fundamental; $f_n = nf_1$; $n$ = number of loops</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Standing Wave (One End Free)</div>
+    <div class="fcard-formula">$$f_n = \frac{(2n-1)}{4L}\sqrt{\frac{T}{\mu}}, \quad n = 1, 2, 3, \ldots$$</div>
+    <div class="fcard-note">Only odd harmonics; $f_1 : f_3 : f_5 = 1 : 3 : 5$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Standing Wave Nodes &amp; Antinodes</div>
+    <div class="fcard-formula">$$\text{Node–Node} = \frac{\lambda}{2}, \quad \text{Node–Antinode} = \frac{\lambda}{4}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 13. HEAT & THERMODYNAMICS ===================== -->
+<section class="topic-section" id="sec-13">
+<div class="topic-header">
+  <span class="topic-num">13</span>
+  <h2 class="topic-title">Heat &amp; Thermodynamics</h2>
+  <span class="topic-badge">Thermal Physics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">RMS Speed</div>
+    <div class="fcard-formula">$$v_{rms} = \sqrt{\frac{3RT}{M_{mol}}} = \sqrt{\frac{3kT}{m}} = \sqrt{\frac{3P}{\rho}}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Average Speed</div>
+    <div class="fcard-formula">$$\bar{v} = \sqrt{\frac{8RT}{\pi M_{mol}}} = \sqrt{\frac{8kT}{\pi m}}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Most Probable Speed</div>
+    <div class="fcard-formula">$$v_p = \sqrt{\frac{2RT}{M_{mol}}} = \sqrt{\frac{2kT}{m}}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Speed Comparison</div>
+    <div class="fcard-formula">$$v_{rms} : \bar{v} : v_p = \sqrt{3} : \sqrt{\frac{8}{\pi}} : \sqrt{2} \approx 1.73 : 1.60 : 1.41$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Equipartition of Energy</div>
+    <div class="fcard-formula">$$\text{KE per molecule} = \frac{1}{2}fkT$$</div>
+    <div class="fcard-note">$f$ = degrees of freedom; mono=3, di=5, poly=6</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Internal Energy (Ideal Gas)</div>
+    <div class="fcard-formula">$$U = \frac{f}{2}nRT$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Specific Heats (Ideal Gas)</div>
+    <div class="fcard-formula">$$C_v = \frac{f}{2}R, \quad C_p = \left(\frac{f}{2}+1\right)R$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Mayer's Relation</div>
+    <div class="fcard-formula">$$C_p - C_v = R \quad\text{(ideal gas only)}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Adiabatic Index</div>
+    <div class="fcard-formula">$$\gamma = \frac{C_p}{C_v} = 1 + \frac{2}{f}$$</div>
+    <div class="fcard-note">Monatomic: 5/3 ≈ 1.67; Diatomic: 7/5 = 1.4; Triatomic: 4/3 ≈ 1.33</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Isothermal Work Done</div>
+    <div class="fcard-formula">$$W = nRT\ln\!\left(\frac{V_f}{V_i}\right) = 2.303\,nRT\log_{10}\!\left(\frac{V_f}{V_i}\right)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Isochoric Process</div>
+    <div class="fcard-formula">$$dW = 0, \quad \Delta U = nC_v\Delta T = Q$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Isobaric Process</div>
+    <div class="fcard-formula">$$W = nR(T_f - T_i) = P\Delta V, \quad Q = nC_p\Delta T$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Adiabatic Relations</div>
+    <div class="fcard-formula">$$PV^\gamma = \text{const}, \quad TV^{\gamma-1} = \text{const}, \quad TP^{(1-\gamma)/\gamma} = \text{const}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Adiabatic Work Done</div>
+    <div class="fcard-formula">$$W = \frac{nR(T_i - T_f)}{\gamma - 1} = \frac{P_1V_1 - P_2V_2}{\gamma - 1}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Cyclic Process</div>
+    <div class="fcard-formula">$$\Delta Q = \Delta W \quad (\Delta U = 0)$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Carnot Efficiency</div>
+    <div class="fcard-formula">$$\eta = 1 - \frac{T_2}{T_1} = 1 - \frac{Q_2}{Q_1} = \frac{W}{Q_H}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Coefficient of Performance (Refrigerator)</div>
+    <div class="fcard-formula">$$\beta = \frac{Q_2}{W} = \frac{T_2}{T_1 - T_2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Entropy Change</div>
+    <div class="fcard-formula">$$\Delta S = \int_i^f \frac{dQ}{T}, \quad \Delta S_{adiabatic} = 0$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Mixture of Gases (Molar Quantities)</div>
+    <div class="fcard-formula">$$\bar{M} = \frac{n_1 M_1 + n_2 M_2}{n_1+n_2}, \quad C_{v,mix} = \frac{n_1 C_{v1}+n_2 C_{v2}}{n_1+n_2}$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Thermal Expansion</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Linear Expansion</div>
+      <div class="fcard-formula">$$\Delta L = \alpha L_0 \Delta T, \quad L = L_0(1 + \alpha\Delta T)$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Area / Superficial Expansion</div>
+      <div class="fcard-formula">$$\Delta A = \beta A_0 \Delta T, \quad \beta \approx 2\alpha$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Volume / Cubical Expansion</div>
+      <div class="fcard-formula">$$\Delta V = \gamma V_0 \Delta T, \quad \gamma \approx 3\alpha$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Thermal Stress</div>
+      <div class="fcard-formula">$$\frac{F}{A} = Y\alpha\Delta T$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Pendulum Clock (Temperature)</div>
+      <div class="fcard-formula">$$\frac{\Delta T_{period}}{T} = \frac{1}{2}\alpha\Delta\theta$$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Heat Transfer</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Thermal Conduction (Fourier's Law)</div>
+      <div class="fcard-formula">$$\frac{dQ}{dt} = -KA\frac{dT}{dx}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Thermal Resistance</div>
+      <div class="fcard-formula">$$R_{th} = \frac{\ell}{KA}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Stefan-Boltzmann Law</div>
+      <div class="fcard-formula">$$u = e\sigma T^4, \quad \sigma = 5.67\times10^{-8}\ \text{W/m}^2\text{K}^4$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Net Radiation Power</div>
+      <div class="fcard-formula">$$P_{net} = e\sigma A(T^4 - T_0^4)$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Wien's Displacement Law</div>
+      <div class="fcard-formula">$$\lambda_m T = b = 2.898\times10^{-3}\ \text{m·K}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Newton's Law of Cooling</div>
+      <div class="fcard-formula">$$\frac{d\theta}{dt} = -k(\theta - \theta_0), \quad \theta = \theta_0 + (\theta_i - \theta_0)e^{-kt}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Kirchhoff's Law</div>
+      <div class="fcard-formula">$$\frac{E_{body}}{a_{body}} = E_{blackbody}$$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Calorimetry</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Specific Heat</div>
+      <div class="fcard-formula">$$S = \frac{Q}{m\Delta T}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Molar Specific Heat</div>
+      <div class="fcard-formula">$$C = \frac{Q}{n\Delta T}$$</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 14. ELECTROSTATICS ===================== -->
+<section class="topic-section" id="sec-14">
+<div class="topic-header">
+  <span class="topic-num">14</span>
+  <h2 class="topic-title">Electrostatics</h2>
+  <span class="topic-badge">Electricity</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Coulomb's Law</div>
+    <div class="fcard-formula">$$\vec{F} = \frac{1}{4\pi\varepsilon_0}\frac{q_1 q_2}{r^2}\hat{r} = k\frac{q_1 q_2}{r^2}\hat{r}$$</div>
+    <div class="fcard-note">$k = 9\times10^9$ N·m²/C²; $\varepsilon_0 = 8.85\times10^{-12}$ C²/Nm²</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Electric Field (General)</div>
+    <div class="fcard-formula">$$\vec{E} = \frac{\vec{F}}{q_0} = -\nabla V$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Gauss's Law</div>
+    <div class="fcard-formula">$$\phi_E = \oint \vec{E}\cdot d\vec{A} = \frac{q_{enc}}{\varepsilon_0}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Electric Potential</div>
+    <div class="fcard-formula">$$V_P = \frac{W_{\infty\to P}}{q_0} = \frac{kq}{r}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Potential Difference</div>
+    <div class="fcard-formula">$$V_A - V_B = -\int_A^B \vec{E}\cdot d\vec{r}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Energy Density</div>
+    <div class="fcard-formula">$$u = \frac{1}{2}\varepsilon_0 E^2$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Electric Field &amp; Potential for Standard Configurations</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Configuration</th><th>$E$ (field)</th><th>$V$ (potential)</th></tr>
+      <tr><td>Point charge</td><td>$\dfrac{kq}{r^2}\hat{r}$</td><td>$\dfrac{kq}{r}$</td></tr>
+      <tr><td>Infinite line charge ($\lambda$)</td><td>$\dfrac{\lambda}{2\pi\varepsilon_0 r}$</td><td>$-\dfrac{\lambda}{2\pi\varepsilon_0}\ln r + C$</td></tr>
+      <tr><td>Infinite sheet ($\sigma$)</td><td>$\dfrac{\sigma}{2\varepsilon_0}$</td><td>Undefined (relative only)</td></tr>
+      <tr><td>Charged ring (axis, dist $x$)</td><td>$\dfrac{kQx}{(R^2+x^2)^{3/2}}$</td><td>$\dfrac{kQ}{\sqrt{R^2+x^2}}$</td></tr>
+      <tr><td>Conducting sphere ($r\geq R$)</td><td>$\dfrac{kQ}{r^2}$</td><td>$\dfrac{kQ}{r}$</td></tr>
+      <tr><td>Conducting sphere ($r < R$)</td><td>$0$</td><td>$\dfrac{kQ}{R}$</td></tr>
+      <tr><td>Solid sphere ($r\leq R$)</td><td>$\dfrac{kQr}{R^3}$</td><td>$\dfrac{kQ}{2R^3}(3R^2-r^2)$</td></tr>
+    </table>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Electric Dipole</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Dipole Moment</div>
+      <div class="fcard-formula">$$\vec{p} = q \cdot (2\ell)\hat{n} \quad\text{(from −q to +q)}$$</div>
+    </div>
+    <div class="fcard highlight">
+      <div class="fcard-label">Field on Axis (End-on)</div>
+      <div class="fcard-formula">$$E_{axis} = \frac{2kp}{r^3}$$</div>
+    </div>
+    <div class="fcard highlight">
+      <div class="fcard-label">Field on Equatorial</div>
+      <div class="fcard-formula">$$E_{eq} = \frac{kp}{r^3}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Field at General Point $(r,\theta)$</div>
+      <div class="fcard-formula">$$E = \frac{kp}{r^3}\sqrt{1+3\cos^2\theta}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Potential at General Point</div>
+      <div class="fcard-formula">$$V = \frac{kp\cos\theta}{r^2}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Torque in Uniform Field</div>
+      <div class="fcard-formula">$$\vec{\tau} = \vec{p}\times\vec{E}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">PE of Dipole in Field</div>
+      <div class="fcard-formula">$$U = -\vec{p}\cdot\vec{E} = -pE\cos\theta$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Self Energy (Charged Shell)</div>
+      <div class="fcard-formula">$$U_{self} = \frac{kQ^2}{2R}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Self Energy (Solid Sphere)</div>
+      <div class="fcard-formula">$$U_{self} = \frac{3kQ^2}{5R}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Electric Pressure on Conductor</div>
+      <div class="fcard-formula">$$P = \frac{\sigma^2}{2\varepsilon_0}$$</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 15. CURRENT ELECTRICITY ===================== -->
+<section class="topic-section" id="sec-15">
+<div class="topic-header">
+  <span class="topic-num">15</span>
+  <h2 class="topic-title">Current Electricity</h2>
+  <span class="topic-badge">Electricity</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Electric Current</div>
+    <div class="fcard-formula">$$I = \frac{dq}{dt}, \quad I_{avg} = \frac{\Delta q}{\Delta t}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Current Density &amp; Drift Velocity</div>
+    <div class="fcard-formula">$$I = nAev_d, \quad J = \frac{I}{A} = nev_d$$</div>
+    <div class="fcard-note">$n$ = number density; $e = 1.6\times10^{-19}$ C; $v_d$ = drift velocity</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Resistance &amp; Ohm's Law</div>
+    <div class="fcard-formula">$$V = IR, \quad R = \frac{\rho\ell}{A}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Resistivity &amp; Conductivity</div>
+    <div class="fcard-formula">$$\rho = \frac{2m}{ne^2\tau}, \quad \sigma = \frac{1}{\rho}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Temp. Dependence of Resistance</div>
+    <div class="fcard-formula">$$R = R_0(1 + \alpha\Delta T)$$</div>
+    <div class="fcard-note">$\alpha$ = temperature coefficient of resistance</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Electrical Power</div>
+    <div class="fcard-formula">$$P = VI = I^2R = \frac{V^2}{R}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Joule Heating (Heat Generated)</div>
+    <div class="fcard-formula">$$H = I^2Rt = VIt = \frac{V^2t}{R} \quad\text{(in Joules)}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Kirchhoff's Current Law (KCL)</div>
+    <div class="fcard-formula">$$\sum I_{in} = \sum I_{out}$$</div>
+    <div class="fcard-note">Conservation of charge at a junction</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Kirchhoff's Voltage Law (KVL)</div>
+    <div class="fcard-formula">$$\sum IR + \sum\varepsilon = 0 \quad\text{(around any loop)}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Series Resistance</div>
+    <div class="fcard-formula">$$R_{eq} = R_1 + R_2 + \cdots, \quad V_i = V\cdot\frac{R_i}{\sum R}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Parallel Resistance</div>
+    <div class="fcard-formula">$$\frac{1}{R_{eq}} = \frac{1}{R_1}+\frac{1}{R_2}+\cdots, \quad I_i = I\cdot\frac{R_{eq}}{R_i}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Wheatstone Bridge (Balanced)</div>
+    <div class="fcard-formula">$$\frac{P}{Q} = \frac{R}{S} \implies PS = QR$$</div>
+    <div class="fcard-note">Zero current through galvanometer at balance</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Cells in Series</div>
+    <div class="fcard-formula">$$\varepsilon_{eq} = \varepsilon_1+\varepsilon_2+\cdots, \quad r_{eq} = r_1+r_2+\cdots$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Cells in Parallel</div>
+    <div class="fcard-formula">$$\varepsilon_{eq} = \frac{\sum(\varepsilon_i/r_i)}{\sum(1/r_i)}, \quad \frac{1}{r_{eq}} = \frac{1}{r_1}+\frac{1}{r_2}+\cdots$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Ammeter (Shunt)</div>
+    <div class="fcard-formula">$$I_G R_G = (I - I_G)S \implies S = \frac{I_G R_G}{I - I_G}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Voltmeter (Series Resistance)</div>
+    <div class="fcard-formula">$$R_S = \frac{V}{I_G} - R_G$$</div>
+  </div>
+  <div class="fcard amber">
+    <div class="fcard-label">Potentiometer (Potential Gradient)</div>
+    <div class="fcard-formula">$$x = \frac{V_A - V_B}{L} = \frac{\varepsilon}{R+r}\cdot\frac{R}{L}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Potentiometer (Internal Resistance)</div>
+    <div class="fcard-formula">$$r' = R\left(\frac{\ell_1}{\ell_2} - 1\right) = R\left(\frac{\ell_1-\ell_2}{\ell_2}\right)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Metre Bridge (Unknown Resistance)</div>
+    <div class="fcard-formula">$$X = R\cdot\frac{\ell}{100-\ell}$$</div>
+    <div class="fcard-note">$\ell$ = balancing length from end with known resistance $R$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 16. CAPACITANCE ===================== -->
+<section class="topic-section" id="sec-16">
+<div class="topic-header">
+  <span class="topic-num">16</span>
+  <h2 class="topic-title">Capacitance</h2>
+  <span class="topic-badge">Electricity</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Capacitance Definition</div>
+    <div class="fcard-formula">$$C = \frac{Q}{V}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Parallel Plate Capacitor</div>
+    <div class="fcard-formula">$$C = \frac{\varepsilon_0 A}{d} = \frac{K\varepsilon_0 A}{d}$$</div>
+    <div class="fcard-note">$K$ = dielectric constant; $A$ = plate area; $d$ = separation</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Spherical Capacitor</div>
+    <div class="fcard-formula">$$C = 4\pi\varepsilon_0\frac{ab}{b-a}$$</div>
+    <div class="fcard-note">Inner radius $a$, outer radius $b$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Isolated Sphere</div>
+    <div class="fcard-formula">$$C = 4\pi\varepsilon_0 R$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Cylindrical Capacitor (per unit length)</div>
+    <div class="fcard-formula">$$C = \frac{2\pi\varepsilon_0}{\ln(b/a)} \quad \text{F/m}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Energy Stored</div>
+    <div class="fcard-formula">$$U = \frac{1}{2}CV^2 = \frac{Q^2}{2C} = \frac{QV}{2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Energy Density</div>
+    <div class="fcard-formula">$$u = \frac{1}{2}\varepsilon_0 KE^2 = \frac{1}{2}\varepsilon_r E^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Series Combination</div>
+    <div class="fcard-formula">$$\frac{1}{C_{eq}} = \frac{1}{C_1}+\frac{1}{C_2}+\cdots, \quad V_i \propto \frac{1}{C_i}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Parallel Combination</div>
+    <div class="fcard-formula">$$C_{eq} = C_1+C_2+\cdots, \quad Q_i \propto C_i$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Charging of Capacitor</div>
+    <div class="fcard-formula">$$q = q_0(1-e^{-t/\tau}), \quad I = \frac{V}{R}e^{-t/\tau}, \quad \tau = RC$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Discharging of Capacitor</div>
+    <div class="fcard-formula">$$q = q_0\,e^{-t/\tau}, \quad I = \frac{q_0}{\tau}e^{-t/\tau}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Redistribution (Common Potential)</div>
+    <div class="fcard-formula">$$V_{common} = \frac{C_1V_1 + C_2V_2}{C_1+C_2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Energy Loss in Redistribution</div>
+    <div class="fcard-formula">$$\Delta U = \frac{1}{2}\frac{C_1C_2}{C_1+C_2}(V_1-V_2)^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">With Dielectric ($K$)</div>
+    <div class="fcard-formula">$$C = KC_0, \quad E_{in} = \frac{E_0}{K}, \quad \sigma_b = \sigma\!\left(1-\frac{1}{K}\right)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Force on Dielectric (Battery connected)</div>
+    <div class="fcard-formula">$$F = \frac{\varepsilon_0 b V^2(K-1)}{2d}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 17. AC ===================== -->
+<section class="topic-section" id="sec-17">
+<div class="topic-header">
+  <span class="topic-num">17</span>
+  <h2 class="topic-title">Alternating Current</h2>
+  <span class="topic-badge">AC Circuits</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">RMS Values</div>
+    <div class="fcard-formula">$$I_{rms} = \frac{I_0}{\sqrt{2}}, \quad V_{rms} = \frac{V_0}{\sqrt{2}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Inductive Reactance</div>
+    <div class="fcard-formula">$$X_L = \omega L = 2\pi fL$$</div>
+    <div class="fcard-note">$V_L$ leads $I$ by $\pi/2$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Capacitive Reactance</div>
+    <div class="fcard-formula">$$X_C = \frac{1}{\omega C} = \frac{1}{2\pi fC}$$</div>
+    <div class="fcard-note">$I$ leads $V_C$ by $\pi/2$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Impedance (Series RLC)</div>
+    <div class="fcard-formula">$$Z = \sqrt{R^2 + (X_L - X_C)^2}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Phase Angle</div>
+    <div class="fcard-formula">$$\tan\phi = \frac{X_L - X_C}{R}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Average Power</div>
+    <div class="fcard-formula">$$P_{avg} = V_{rms}I_{rms}\cos\phi = I_{rms}^2 R$$</div>
+    <div class="fcard-note">$\cos\phi$ = power factor; wattless current = $I_{rms}\sin\phi$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Resonance Condition (Series RLC)</div>
+    <div class="fcard-formula">$$X_L = X_C \implies \omega_0 = \frac{1}{\sqrt{LC}}, \quad Z_{min} = R$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Purely Resistive Circuit</div>
+    <div class="fcard-formula">$$I = \frac{V_m}{R}\sin\omega t, \quad \phi = 0, \quad P = \frac{V_{rms}^2}{R}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Purely Inductive Circuit</div>
+    <div class="fcard-formula">$$I_m = \frac{V_m}{X_L}, \quad \phi = +\frac{\pi}{2}, \quad P_{avg} = 0$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Purely Capacitive Circuit</div>
+    <div class="fcard-formula">$$I_m = \frac{V_m}{X_C}, \quad \phi = -\frac{\pi}{2}, \quad P_{avg} = 0$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Quality Factor (Q)</div>
+    <div class="fcard-formula">$$Q = \frac{\omega_0 L}{R} = \frac{1}{\omega_0 CR} = \frac{1}{R}\sqrt{\frac{L}{C}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Transformer (Ideal)</div>
+    <div class="fcard-formula">$$\frac{V_s}{V_p} = \frac{N_s}{N_p} = \frac{I_p}{I_s}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">LC Oscillations Frequency</div>
+    <div class="fcard-formula">$$\omega = \frac{1}{\sqrt{LC}}, \quad f = \frac{1}{2\pi\sqrt{LC}}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 18. MAGNETIC EFFECT ===================== -->
+<section class="topic-section" id="sec-18">
+<div class="topic-header">
+  <span class="topic-num">18</span>
+  <h2 class="topic-title">Magnetic Effect of Current &amp; Force</h2>
+  <span class="topic-badge">Magnetism</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Biot-Savart Law</div>
+    <div class="fcard-formula">$$d\vec{B} = \frac{\mu_0}{4\pi}\frac{Id\vec{\ell}\times\hat{r}}{r^2}$$</div>
+    <div class="fcard-note">$\mu_0 = 4\pi\times10^{-7}$ T·m/A</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Finite Straight Wire</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0 I}{4\pi r}(\sin\theta_1 + \sin\theta_2)$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Infinite Straight Wire</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0 I}{2\pi r}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Circular Loop at Center</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0 NI}{2R}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Circular Loop on Axis (distance $x$)</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0 NIR^2}{2(R^2+x^2)^{3/2}}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Solenoid (Finite)</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0 nI}{2}(\cos\theta_1 - \cos\theta_2)$$</div>
+    <div class="fcard-note">Infinite solenoid: $B = \mu_0 nI$; $n$ = turns/length</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Ampere's Law</div>
+    <div class="fcard-formula">$$\oint\vec{B}\cdot d\vec{\ell} = \mu_0 I_{enc}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Cylindrical Shell (r > R)</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0 I}{2\pi r}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Cylindrical Shell (r &lt; R)</div>
+    <div class="fcard-formula">$$B = 0$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Lorentz Force on Moving Charge</div>
+    <div class="fcard-formula">$$\vec{F} = q(\vec{v}\times\vec{B}) + q\vec{E}$$</div>
+  </div>
+  <div class="fcard amber">
+    <div class="fcard-label">Circular Motion in Magnetic Field</div>
+    <div class="fcard-formula">$$r = \frac{mv}{qB}, \quad T = \frac{2\pi m}{qB}, \quad \omega = \frac{qB}{m}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Helical Motion in B field</div>
+    <div class="fcard-formula">$$r = \frac{mv\sin\theta}{qB}, \quad \text{Pitch} = \frac{2\pi m v\cos\theta}{qB}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Force on Current-Carrying Wire</div>
+    <div class="fcard-formula">$$\vec{F} = I\vec{L}\times\vec{B}$$</div>
+  </div>
+  <div class="fcard highlight>">
+    <div class="fcard-label">Magnetic Moment of Current Loop</div>
+    <div class="fcard-formula">$$\vec{M} = NIA\hat{n}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Torque on Current Loop</div>
+    <div class="fcard-formula">$$\vec{\tau} = \vec{M}\times\vec{B} = NIAB\sin\theta$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Magnetic Field of a Bar Magnet (Axial)</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0}{4\pi}\frac{2M}{r^3}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Magnetic Field of a Bar Magnet (Equatorial)</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0}{4\pi}\frac{M}{r^3}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Field at General Point $(r,\theta)$ (Magnet)</div>
+    <div class="fcard-formula">$$B = \frac{\mu_0 M}{4\pi r^3}\sqrt{1+3\cos^2\theta}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 19. EMI ===================== -->
+<section class="topic-section" id="sec-19">
+<div class="topic-header">
+  <span class="topic-num">19</span>
+  <h2 class="topic-title">Electromagnetic Induction</h2>
+  <span class="topic-badge">Induction</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Magnetic Flux</div>
+    <div class="fcard-formula">$$\Phi = \int\vec{B}\cdot d\vec{A} = BA\cos\theta$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Faraday's Law</div>
+    <div class="fcard-formula">$$\varepsilon = -\frac{d\Phi}{dt} = -N\frac{d\Phi}{dt}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Lenz's Law</div>
+    <div class="fcard-formula">Induced EMF opposes the change in flux that causes it (conservation of energy)</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Motional EMF (Rod in Field)</div>
+    <div class="fcard-formula">$$\varepsilon = Bvl$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Rotating Rod (about one end)</div>
+    <div class="fcard-formula">$$\varepsilon = \frac{1}{2}B\omega\ell^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Rotating Disc</div>
+    <div class="fcard-formula">$$\varepsilon = \frac{1}{2}B\omega r^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Non-Conservative E field (changing B)</div>
+    <div class="fcard-formula">$$\bar{E} = \frac{r}{2}\frac{dB}{dt}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Self Inductance (Instantaneous EMF)</div>
+    <div class="fcard-formula">$$\varepsilon = -L\frac{dI}{dt}, \quad L = \frac{N\Phi}{I}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Self Inductance of Solenoid</div>
+    <div class="fcard-formula">$$L = \mu_0 n^2\pi r^2 \ell = \frac{\mu_0 N^2 A}{\ell}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Energy Stored in Inductor</div>
+    <div class="fcard-formula">$$U = \frac{1}{2}LI^2$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Growth of Current (RL Circuit)</div>
+    <div class="fcard-formula">$$I(t) = \frac{\varepsilon}{R}\left(1 - e^{-t/\tau}\right), \quad \tau = \frac{L}{R}$$</div>
+    <div class="fcard-note">At $t=\tau$: current = 63% of final value $\varepsilon/R$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Decay of Current (RL Circuit)</div>
+    <div class="fcard-formula">$$I(t) = I_0\,e^{-t/\tau}$$</div>
+    <div class="fcard-note">At $t=\tau$: current = 37% of initial value</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Mutual Inductance</div>
+    <div class="fcard-formula">$$\varepsilon_s = -M\frac{dI_p}{dt}, \quad M = k\sqrt{L_1 L_2},\ k\leq 1$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Series Inductors</div>
+    <div class="fcard-formula">$$L_{eq} = L_1+L_2 \pm 2M$$</div>
+    <div class="fcard-note">$+2M$ if same winding direction; $-2M$ if opposite</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Parallel Inductors</div>
+    <div class="fcard-formula">$$\frac{1}{L_{eq}} = \frac{1}{L_1}+\frac{1}{L_2}\ \text{(no mutual coupling)}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 20. GEOMETRICAL OPTICS ===================== -->
+<section class="topic-section" id="sec-20">
+<div class="topic-header">
+  <span class="topic-num">20</span>
+  <h2 class="topic-title">Geometrical Optics</h2>
+  <span class="topic-badge">Optics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard">
+    <div class="fcard-label">Laws of Reflection</div>
+    <div class="fcard-formula">$$i = r$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Mirror Formula</div>
+    <div class="fcard-formula">$$\frac{1}{v} + \frac{1}{u} = \frac{2}{R} = \frac{1}{f}$$</div>
+    <div class="fcard-note">Sign convention: incident light in $-x$ direction; real image: $v < 0$; virtual image: $v > 0$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Lateral Magnification (Mirror)</div>
+    <div class="fcard-formula">$$m = \frac{h_i}{h_o} = -\frac{v}{u}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Newton's Mirror Formula</div>
+    <div class="fcard-formula">$$XY = f^2$$</div>
+    <div class="fcard-note">$X$, $Y$ = distances from focus to object and image</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Optical Power of Mirror</div>
+    <div class="fcard-formula">$$P = -\frac{1}{f}\ \text{(in diopters, f in metres)}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Snell's Law of Refraction</div>
+    <div class="fcard-formula">$$n_1\sin\theta_1 = n_2\sin\theta_2, \quad n = \frac{c}{v} = \frac{\lambda_{vacuum}}{\lambda_{medium}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Critical Angle (TIR)</div>
+    <div class="fcard-formula">$$\sin\theta_C = \frac{n_r}{n_d}$$</div>
+    <div class="fcard-note">TIR conditions: (i) denser to rarer; (ii) $i > \theta_C$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Apparent Depth</div>
+    <div class="fcard-formula">$$d_{app} = \frac{d}{n_{rel}}, \quad \text{shift} = d\!\left(1-\frac{1}{n_{rel}}\right)$$</div>
+    <div class="fcard-note">$n_{rel}$ = n(refraction medium)/n(incidence medium)</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Refraction at Spherical Surface</div>
+    <div class="fcard-formula">$$\frac{n_2}{v} - \frac{n_1}{u} = \frac{n_2-n_1}{R}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Lens Maker's Formula</div>
+    <div class="fcard-formula">$$\frac{1}{f} = (n_{rel}-1)\left(\frac{1}{R_1}-\frac{1}{R_2}\right)$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Thin Lens Formula</div>
+    <div class="fcard-formula">$$\frac{1}{v} - \frac{1}{u} = \frac{1}{f}, \quad m = \frac{v}{u}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Combination of Lenses (in contact)</div>
+    <div class="fcard-formula">$$\frac{1}{F} = \frac{1}{f_1}+\frac{1}{f_2}+\cdots, \quad P = P_1+P_2+\cdots$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Prism (Angle of Deviation)</div>
+    <div class="fcard-formula">$$\delta = i + e - A, \quad r_1 + r_2 = A$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Minimum Deviation</div>
+    <div class="fcard-formula">$$n_{rel} = \frac{\sin\!\left(\frac{A+\delta_{min}}{2}\right)}{\sin\!\left(\frac{A}{2}\right)}, \quad \delta_{min} \approx (n-1)A\ \text{(thin prism)}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Dispersive Power</div>
+    <div class="fcard-formula">$$\omega = \frac{n_v-n_r}{n_y-1} = \frac{\delta_v-\delta_r}{\delta_y}$$</div>
+    <div class="fcard-note">$n_y \approx (n_v+n_r)/2$ if not given</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Achromatic Combination</div>
+    <div class="fcard-formula">$$(n_v-n_r)A = (n_v'-n_r')A' \implies \omega\delta + \omega'\delta' = 0$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Optical Instruments</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Instrument</th><th>Magnification (Image at $\infty$)</th><th>Magnification (Image at D)</th><th>Length</th></tr>
+      <tr><td>Simple Microscope</td><td>$M = D/f$</td><td>$M = 1+D/f$</td><td>—</td></tr>
+      <tr><td>Compound Microscope</td><td>$M = \dfrac{v_0}{u_0}\cdot\dfrac{D}{f_e}$</td><td>$M = \dfrac{v_0}{u_0}\!\left(1+\dfrac{D}{f_e}\right)$</td><td>$L = v_0+f_e$</td></tr>
+      <tr><td>Astronomical Telescope</td><td>$M = f_0/f_e$</td><td>$M = \dfrac{f_0}{f_e}\!\left(1+\dfrac{f_e}{D}\right)$</td><td>$L = f_0+f_e$</td></tr>
+      <tr><td>Terrestrial Telescope</td><td>$M = f_0/f_e$</td><td>—</td><td>$L = f_0+4f+f_e$</td></tr>
+      <tr><td>Galilean Telescope</td><td>$M = f_0/f_e$</td><td>—</td><td>$L = f_0-f_e$</td></tr>
+    </table>
+  </div>
+  <div class="formula-grid" style="margin-top:12px">
+    <div class="fcard">
+      <div class="fcard-label">Resolving Power — Microscope</div>
+      <div class="fcard-formula">$$RP = \frac{2n\sin\theta}{\lambda}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Resolving Power — Telescope</div>
+      <div class="fcard-formula">$$RP = \frac{a}{1.22\lambda}$$</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 21. MODERN PHYSICS ===================== -->
+<section class="topic-section" id="sec-21">
+<div class="topic-header">
+  <span class="topic-num">21</span>
+  <h2 class="topic-title">Modern Physics</h2>
+  <span class="topic-badge">Quantum & Nuclear</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Photoelectric Effect (Einstein)</div>
+    <div class="fcard-formula">$$h\nu = W_0 + KE_{max}, \quad KE_{max} = eV_s$$</div>
+    <div class="fcard-note">$W_0 = h\nu_0$ = work function; $V_s$ = stopping potential</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Photon Energy &amp; Momentum</div>
+    <div class="fcard-formula">$$E = h\nu = \frac{hc}{\lambda} = \frac{12400}{\lambda(\text{Å})}\ \text{eV}$$</div>
+    <div class="fcard-formula" style="margin-top:6px">$$p = \frac{h}{\lambda} = \frac{E}{c}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">de Broglie Wavelength</div>
+    <div class="fcard-formula">$$\lambda = \frac{h}{mv} = \frac{h}{p} = \frac{h}{\sqrt{2mKE}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Radiation Pressure (a=1, r=0)</div>
+    <div class="fcard-formula">$$P = \frac{I}{c}, \quad F = \frac{IA}{c}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Radiation Pressure (r=1, a=0)</div>
+    <div class="fcard-formula">$$P = \frac{2I}{c}, \quad F = \frac{2IA}{c}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Radiation Pressure (General, 0 &lt; r &lt; 1)</div>
+    <div class="fcard-formula">$$P = \frac{I}{c}(1+r)\cos^2\theta$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Bohr's Atomic Model (Hydrogen-like)</div>
+  <div class="formula-grid">
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Orbital Radius</div>
+      <div class="fcard-formula">$$r_n = \frac{n^2}{Z}a_0, \quad a_0 = 0.529\ \text{Å}$$</div>
+    </div>
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Orbital Speed</div>
+      <div class="fcard-formula">$$v_n = \frac{Z}{n}v_0, \quad v_0 = 2.19\times10^6\ \text{m/s}$$</div>
+    </div>
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Energy of nth Orbit</div>
+      <div class="fcard-formula">$$E_n = E_1\frac{Z^2}{n^2}, \quad E_1 = -13.6\ \text{eV}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Spectral Lines Wavelength</div>
+      <div class="fcard-formula">$$\frac{1}{\lambda} = RZ^2\!\left(\frac{1}{n_1^2}-\frac{1}{n_2^2}\right)$$</div>
+      <div class="fcard-note">$R = 1.097\times10^7$ m$^{-1}$ (Rydberg constant)</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Spectral Series</div>
+      <div class="fcard-formula">Lyman: $n_1=1$ (UV) | Balmer: $n_1=2$ (Visible) | Paschen: $n_1=3$ (IR)</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Total Transitions from nth State</div>
+      <div class="fcard-formula">$$N = \frac{n(n-1)}{2}$$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Nuclear Physics</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Nuclear Radius</div>
+      <div class="fcard-formula">$$R = R_0 A^{1/3}, \quad R_0 = 1.1\times10^{-15}\ \text{m}$$</div>
+    </div>
+    <div class="fcard highlight">
+      <div class="fcard-label">Binding Energy</div>
+      <div class="fcard-formula">$$BE = (ZM_p + NM_n - M_{nucleus})c^2$$</div>
+    </div>
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Radioactive Decay Law</div>
+      <div class="fcard-formula">$$N = N_0 e^{-\lambda t}, \quad A = A_0 e^{-\lambda t}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Half-Life &amp; Mean Life</div>
+      <div class="fcard-formula">$$T_{1/2} = \frac{0.693}{\lambda}, \quad T_{avg} = \frac{1}{\lambda} = \frac{T_{1/2}}{0.693}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Effective Half-Life (two decay paths)</div>
+      <div class="fcard-formula">$$\frac{1}{T} = \frac{1}{t_1}+\frac{1}{t_2}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Alpha Decay</div>
+      <div class="fcard-formula">$${}^A_Z X \to {}^{A-4}_{Z-2}Y + {}^4_2\text{He}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Beta-Minus Decay</div>
+      <div class="fcard-formula">$${}^A_Z X \to {}^A_{Z+1}Y + e^- + \bar{\nu}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Beta-Plus Decay</div>
+      <div class="fcard-formula">$${}^A_Z X \to {}^A_{Z-1}Y + e^+ + \nu$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">X-Ray Minimum Wavelength</div>
+      <div class="fcard-formula">$$\lambda_{min} = \frac{hc}{eV_0} = \frac{12400}{V_0(\text{V})}\ \text{Å}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Moseley's Law</div>
+      <div class="fcard-formula">$$\sqrt{\nu} = a(Z-b)$$</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 22. WAVE OPTICS ===================== -->
+<section class="topic-section" id="sec-22">
+<div class="topic-header">
+  <span class="topic-num">22</span>
+  <h2 class="topic-title">Wave Optics</h2>
+  <span class="topic-badge">Optics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Resultant Intensity (Two Waves)</div>
+    <div class="fcard-formula">$$I = I_1 + I_2 + 2\sqrt{I_1 I_2}\cos\delta$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Constructive / Destructive Interference</div>
+    <div class="fcard-formula">$$I_{max} = (\sqrt{I_1}+\sqrt{I_2})^2, \quad I_{min} = (\sqrt{I_1}-\sqrt{I_2})^2$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">YDSE Path Difference</div>
+    <div class="fcard-formula">$$\Delta p = d\sin\theta \approx \frac{dy}{D} \quad\text{(for } y\ll D)$$</div>
+    <div class="fcard-note">$d$ = slit separation; $D$ = screen distance; $y$ = height on screen</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">YDSE Fringe Width</div>
+    <div class="fcard-formula">$$\beta = \frac{\lambda D}{d}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">YDSE Bright Fringes</div>
+    <div class="fcard-formula">$$y_n = \frac{n\lambda D}{d}, \quad n = 0, \pm1, \pm2, \ldots$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">YDSE Dark Fringes</div>
+    <div class="fcard-formula">$$y_n = \frac{(2n-1)\lambda D}{2d}, \quad n = \pm1, \pm2, \ldots$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">YDSE Intensity (Equal Sources)</div>
+    <div class="fcard-formula">$$I = 4I_0\cos^2\!\left(\frac{\delta}{2}\right)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Highest Order Maxima</div>
+    <div class="fcard-formula">$$n_{max} = \left\lfloor\frac{d}{\lambda}\right\rfloor, \quad \text{Total bright} = 2n_{max}+1$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Optical Path Difference (Slab of thickness t)</div>
+    <div class="fcard-formula">$$\Delta p_{opt} = (n-1)t, \quad \text{Fringe shift} = \frac{(n-1)t}{\beta}\cdot D$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Phase Difference–Path Difference</div>
+    <div class="fcard-formula">$$\delta = \frac{2\pi}{\lambda}\Delta p = \frac{2\pi}{\lambda_{vacuum}}\Delta p_{opt}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Thin Film (Reflected, Condition)</div>
+    <div class="fcard-formula">$$2nd\cos\theta_r = \begin{cases}(m+\tfrac{1}{2})\lambda & \text{constructive}\\ m\lambda & \text{destructive}\end{cases}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Brewster's Angle</div>
+    <div class="fcard-formula">$$\tan\theta_B = n, \quad \theta_B + \theta_r = 90°$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Malus's Law</div>
+    <div class="fcard-formula">$$I = I_0\cos^2\theta$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Single Slit Diffraction Minima</div>
+    <div class="fcard-formula">$$a\sin\theta = m\lambda, \quad m = \pm1, \pm2, \ldots$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Central Maxima Width</div>
+    <div class="fcard-formula">$$\text{Linear width} = \frac{2\lambda D}{a}, \quad \text{Angular width} = \frac{2\lambda}{a}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Diffraction Intensity</div>
+    <div class="fcard-formula">$$I = I_0\left(\frac{\sin\beta/2}{\beta/2}\right)^2, \quad \beta = \frac{2\pi a\sin\theta}{\lambda}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 23. GRAVITATION ===================== -->
+<section class="topic-section" id="sec-23">
+<div class="topic-header">
+  <span class="topic-num">23</span>
+  <h2 class="topic-title">Gravitation</h2>
+  <span class="topic-badge">Mechanics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Newton's Law of Gravitation</div>
+    <div class="fcard-formula">$$F = \frac{Gm_1 m_2}{r^2}, \quad G = 6.674\times10^{-11}\ \text{Nm}^2/\text{kg}^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Gravitational Field &amp; Potential</div>
+    <div class="fcard-formula">$$g = \frac{GM}{r^2}, \quad V = -\frac{GM}{r}, \quad g = -\frac{dV}{dr}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Variation with Altitude</div>
+    <div class="fcard-formula">$$g_h = \frac{GM}{(R+h)^2} \approx g\!\left(1-\frac{2h}{R}\right)\ \text{for } h\ll R$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Variation with Depth</div>
+    <div class="fcard-formula">$$g_d = g\!\left(1 - \frac{d}{R}\right)$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Orbital Velocity</div>
+    <div class="fcard-formula">$$v_0 = \sqrt{\frac{GM}{r}} = \sqrt{\frac{gR^2}{R+h}}$$</div>
+    <div class="fcard-note">Near surface ($h\ll R$): $v_0 \approx \sqrt{gR} \approx 7.92$ km/s</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Escape Velocity</div>
+    <div class="fcard-formula">$$v_e = \sqrt{\frac{2GM}{R}} = \sqrt{2gR} \approx 11.2\ \text{km/s}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Time Period of Satellite</div>
+    <div class="fcard-formula">$$T = 2\pi(R+h)\sqrt{\frac{R+h}{GM}} = 2\pi\sqrt{\frac{(R+h)^3}{GM}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Energy of Satellite</div>
+    <div class="fcard-formula">$$KE = \frac{GMm}{2r}, \quad PE = -\frac{GMm}{r}, \quad E = -\frac{GMm}{2r}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Kepler's Third Law</div>
+    <div class="fcard-formula">$$\frac{T^2}{R^3} = \frac{4\pi^2}{GM} = \text{constant}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Kepler's Second Law (Areal Velocity)</div>
+    <div class="fcard-formula">$$\frac{dA}{dt} = \frac{L}{2m} = \frac{r^2\omega}{2} = \text{constant}$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Gravitational Field &amp; Potential (Standard Bodies)</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Configuration</th><th>$g$ (field)</th><th>$V$ (potential)</th></tr>
+      <tr><td>Thin ring (axis, dist $x$)</td><td>$\dfrac{GMx}{(a^2+x^2)^{3/2}}$</td><td>$-\dfrac{GM}{\sqrt{a^2+x^2}}$</td></tr>
+      <tr><td>Solid sphere, $r > R$</td><td>$\dfrac{GM}{r^2}$</td><td>$-\dfrac{GM}{r}$</td></tr>
+      <tr><td>Solid sphere, $r \leq R$</td><td>$\dfrac{GMr}{R^3}$</td><td>$-\dfrac{GM}{2R^3}(3R^2-r^2)$</td></tr>
+      <tr><td>Shell, $r > R$</td><td>$\dfrac{GM}{r^2}$</td><td>$-\dfrac{GM}{r}$</td></tr>
+      <tr><td>Shell, $r \leq R$</td><td>$0$</td><td>$-\dfrac{GM}{R}$</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 24. FLUID MECHANICS ===================== -->
+<section class="topic-section" id="sec-24">
+<div class="topic-header">
+  <span class="topic-num">24</span>
+  <h2 class="topic-title">Fluid Mechanics &amp; Properties of Matter</h2>
+  <span class="topic-badge">Fluids</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Hydrostatic Pressure</div>
+    <div class="fcard-formula">$$P = P_0 + \rho g h$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Equation of Continuity</div>
+    <div class="fcard-formula">$$A_1 v_1 = A_2 v_2 \quad\text{(incompressible flow)}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Bernoulli's Theorem</div>
+    <div class="fcard-formula">$$P + \frac{1}{2}\rho v^2 + \rho gh = \text{constant}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Torricelli's Theorem (Speed of Efflux)</div>
+    <div class="fcard-formula">$$v = \frac{\sqrt{2gh}}{\sqrt{1-(A_2/A_1)^2}} \approx \sqrt{2gh}\ \text{(for } A_2\ll A_1)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Pressure in Accelerating Liquid</div>
+    <div class="fcard-formula">$$P = h\rho(g+a_0), \quad \tan\theta = \frac{a_0}{g}\ \text{(horizontal accel.)}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Hydraulic Press</div>
+    <div class="fcard-formula">$$\frac{F}{A} = \frac{f}{a} \implies F = \frac{A}{a}f$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Elasticity</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Young's Modulus</div>
+      <div class="fcard-formula">$$Y = \frac{F/A}{\Delta L/L} = \frac{FL}{A\Delta L}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Bulk Modulus</div>
+      <div class="fcard-formula">$$B = -\frac{P}{\Delta V/V}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Shear Modulus</div>
+      <div class="fcard-formula">$$G = \frac{F/A}{\tan\phi}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Elastic PE per Unit Volume</div>
+      <div class="fcard-formula">$$u = \frac{1}{2}\times\text{stress}\times\text{strain} = \frac{\text{stress}^2}{2Y}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Inter-atomic Force Constant</div>
+      <div class="fcard-formula">$$k = Y r_0$$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Viscosity &amp; Surface Tension</div>
+  <div class="formula-grid">
+    <div class="fcard">
+      <div class="fcard-label">Newton's Law of Viscosity</div>
+      <div class="fcard-formula">$$F = \eta A \frac{dv}{dx}$$</div>
+    </div>
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Stoke's Law</div>
+      <div class="fcard-formula">$$F = 6\pi\eta r v$$</div>
+    </div>
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Terminal Velocity</div>
+      <div class="fcard-formula">$$v_t = \frac{2r^2(\rho-\sigma)g}{9\eta}$$</div>
+      <div class="fcard-note">$\rho$ = density of sphere; $\sigma$ = density of fluid</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Surface Tension</div>
+      <div class="fcard-formula">$$T = \frac{F}{\ell} = \frac{W}{\Delta A}\ \text{(surface energy/area)}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Excess Pressure (Bubble in liquid)</div>
+      <div class="fcard-formula">$$\Delta P = \frac{4T}{r}\ \text{(soap bubble)}, \quad \frac{2T}{r}\ \text{(drop or air bubble)}$$</div>
+    </div>
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Capillary Rise</div>
+      <div class="fcard-formula">$$h = \frac{2T\cos\theta}{r\rho g}$$</div>
+    </div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 25. SOUND WAVES ===================== -->
+<section class="topic-section" id="sec-25">
+<div class="topic-header">
+  <span class="topic-num">25</span>
+  <h2 class="topic-title">Sound Waves</h2>
+  <span class="topic-badge">Waves</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Speed of Sound</div>
+    <div class="fcard-formula">$$C = \sqrt{\frac{E}{\rho}} = \sqrt{\frac{\gamma P}{\rho}} = \sqrt{\frac{\gamma RT}{M_0}}$$</div>
+    <div class="fcard-note">Solid: $C=\sqrt{Y/\rho}$; Liquid: $C=\sqrt{B/\rho}$; $M_0$ in kg/mol</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Displacement &amp; Pressure Waves</div>
+    <div class="fcard-formula">$$s = A\sin(\omega t - kx), \quad P_{ex} = BAk\cos(\omega t-kx)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Intensity of Sound</div>
+    <div class="fcard-formula">$$I = 2\pi^2 f^2 A^2 \rho v = \frac{P_m^2}{2\rho v}$$</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Loudness (Sound Level)</div>
+    <div class="fcard-formula">$$L = 10\log_{10}\!\left(\frac{I}{I_0}\right)\ \text{dB}, \quad I_0 = 10^{-12}\ \text{W/m}^2$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Intensity vs Distance (Point Source)</div>
+    <div class="fcard-formula">$$I = \frac{P}{4\pi r^2}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Doppler Effect</div>
+    <div class="fcard-formula">$$f_{obs} = f\frac{v \pm v_0}{v \mp v_s}$$</div>
+    <div class="fcard-note">Upper signs: observer/source approaching. Apparent $\lambda = v_s\!\left(\frac{v}{v-v_s}\right)\frac{1}{f}$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Beats</div>
+    <div class="fcard-formula">$$f_{beats} = |f_1 - f_2|$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Closed Organ Pipe (one end open)</div>
+    <div class="fcard-formula">$$f_n = \frac{(2n-1)v}{4L}, \quad n = 1,2,3,\ldots \quad \text{(odd harmonics only)}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Open Organ Pipe (both ends open)</div>
+    <div class="fcard-formula">$$f_n = \frac{nv}{2L}, \quad n = 1,2,3,\ldots \quad \text{(all harmonics)}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Interference of Sound Waves</div>
+    <div class="fcard-formula">$$P_0 = \sqrt{P_{m1}^2 + P_{m2}^2 + 2P_{m1}P_{m2}\cos\delta}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 26. EM WAVES ===================== -->
+<section class="topic-section" id="sec-26">
+<div class="topic-header">
+  <span class="topic-num">26</span>
+  <h2 class="topic-title">Electromagnetic Waves</h2>
+  <span class="topic-badge">EM Waves</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard highlight">
+    <div class="fcard-label">Speed of EM Waves in Vacuum</div>
+    <div class="fcard-formula">$$c = \frac{1}{\sqrt{\mu_0\varepsilon_0}} \approx 3\times10^8\ \text{m/s}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">E–B Relationship</div>
+    <div class="fcard-formula">$$\frac{E_0}{B_0} = c, \quad E = cB$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Intensity of EM Wave</div>
+    <div class="fcard-formula">$$I = \frac{1}{2}\varepsilon_0 c E_0^2 = \frac{c B_0^2}{2\mu_0} = \frac{E_0 B_0}{2\mu_0}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Radiation Pressure (complete absorption)</div>
+    <div class="fcard-formula">$$P_{rad} = \frac{I}{c}, \quad p = \frac{U}{c}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Maxwell's Displacement Current</div>
+    <div class="fcard-formula">$$I_d = \varepsilon_0\frac{d\Phi_E}{dt}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Ampere-Maxwell Law</div>
+    <div class="fcard-formula">$$\oint\vec{B}\cdot d\vec{\ell} = \mu_0(I + I_d) = \mu_0 I + \mu_0\varepsilon_0\frac{d\Phi_E}{dt}$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">EM Spectrum</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Type</th><th>Wavelength Range</th><th>Production</th></tr>
+      <tr><td>Radio waves</td><td>$> 0.1$ m</td><td>Oscillating electrons in antenna</td></tr>
+      <tr><td>Microwave</td><td>$0.1$ m — $1$ mm</td><td>Magnetron/klystron tubes</td></tr>
+      <tr><td>Infrared</td><td>$1$ mm — $700$ nm</td><td>Vibrating atoms/molecules</td></tr>
+      <tr><td>Visible</td><td>$700$ nm — $400$ nm</td><td>Electron transitions in atoms</td></tr>
+      <tr><td>Ultraviolet</td><td>$400$ nm — $1$ nm</td><td>Inner shell electron transitions</td></tr>
+      <tr><td>X-rays</td><td>$1$ nm — $10^{-3}$ nm</td><td>X-ray tubes, inner shell electrons</td></tr>
+      <tr><td>Gamma rays</td><td>$< 10^{-3}$ nm</td><td>Radioactive nuclear decay</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 27. ERROR & MEASUREMENT ===================== -->
+<section class="topic-section" id="sec-27">
+<div class="topic-header">
+  <span class="topic-num">27</span>
+  <h2 class="topic-title">Error &amp; Measurement</h2>
+  <span class="topic-badge">Measurement</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard">
+    <div class="fcard-label">Absolute Error</div>
+    <div class="fcard-formula">$$\Delta a_n = |a_{mean} - a_n|$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Mean Absolute Error</div>
+    <div class="fcard-formula">$$\overline{\Delta a} = \frac{1}{n}\sum_{i=1}^n|\Delta a_i|$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Relative Error</div>
+    <div class="fcard-formula">$$\delta_r = \frac{\overline{\Delta a}}{a_{mean}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Percentage Error</div>
+    <div class="fcard-formula">$$\delta\% = \frac{\overline{\Delta a}}{a_{mean}}\times 100\%$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Error Propagation (Sum/Difference)</div>
+    <div class="fcard-formula">$$\text{If } z = x \pm y: \quad \Delta z = \Delta x + \Delta y$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Error Propagation (Product/Quotient)</div>
+    <div class="fcard-formula">$$\text{If } z = x^a y^b z^c: \quad \frac{\Delta z}{z} = a\frac{\Delta x}{x} + b\frac{\Delta y}{y} + c\frac{\Delta w}{w}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Least Count (Vernier Callipers)</div>
+    <div class="fcard-formula">$$LC = 1\ \text{MSD} - 1\ \text{VSD}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Screw Gauge Reading</div>
+    <div class="fcard-formula">$$\text{Reading} = \text{MSR} + (CSR)\times LC$$</div>
+    <div class="fcard-note">$LC = \text{pitch}/\text{no. of circular scale divisions}$; pitch = advance per rotation</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:16px">
+  <div class="sub-title">Significant Figures Rules</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Rule</th><th>Example</th></tr>
+      <tr><td>All non-zero digits are significant</td><td>$152.4$ → 4 SF</td></tr>
+      <tr><td>Zeros between non-zeros are significant</td><td>$1002$ → 4 SF</td></tr>
+      <tr><td>Leading zeros (after decimal, before non-zero) are NOT significant</td><td>$0.0023$ → 2 SF</td></tr>
+      <tr><td>Trailing zeros with decimal point ARE significant</td><td>$1.500$ → 4 SF</td></tr>
+      <tr><td>Trailing zeros without decimal point are NOT significant</td><td>$1500$ → 2 SF</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 28. COMMUNICATION ===================== -->
+<section class="topic-section" id="sec-28">
+<div class="topic-header">
+  <span class="topic-num">28</span>
+  <h2 class="topic-title">Principle of Communication</h2>
+  <span class="topic-badge">Electronics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard">
+    <div class="fcard-label">Range of Transmission Tower</div>
+    <div class="fcard-formula">$$d_T = \sqrt{2Rh_T}, \quad d_M = \sqrt{2Rh_T}+\sqrt{2Rh_R}$$</div>
+    <div class="fcard-note">$R$ = Earth's radius; $h_T$, $h_R$ = height of transmitter/receiver</div>
+  </div>
+  <div class="fcard highlight">
+    <div class="fcard-label">Amplitude Modulation Index</div>
+    <div class="fcard-formula">$$m_a = \frac{A_m}{A_c} = \frac{A_{max}-A_{min}}{A_{max}+A_{min}}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">AM Signal</div>
+    <div class="fcard-formula">$$c_m(t) = A_c\sin\omega_c t + \frac{\mu A_c}{2}\cos(\omega_c-\omega_m)t - \frac{\mu A_c}{2}\cos(\omega_c+\omega_m)t$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Sidebands</div>
+    <div class="fcard-formula">$$f_{USB} = f_c + f_m, \quad f_{LSB} = f_c - f_m, \quad \text{BW} = 2f_m$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Total Modulated Index (multiple signals)</div>
+    <div class="fcard-formula">$$m_t = \sqrt{m_1^2 + m_2^2 + m_3^2 + \cdots}$$</div>
+  </div>
+  <div class="fcard highlight amber">
+    <div class="fcard-label">Power in AM Waves</div>
+    <div class="fcard-formula">$$P_c = \frac{A_c^2}{2R}, \quad P_{sb} = \frac{m_a^2 A_c^2}{4R}, \quad P_T = P_c\!\left(1+\frac{m_a^2}{2}\right)$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">FM — Frequency Deviation &amp; Index</div>
+    <div class="fcard-formula">$$\Delta f = f_{max}-f_c = k_f E_m, \quad m_f = \frac{\Delta f}{f_m}$$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Current Ratio (AM)</div>
+    <div class="fcard-formula">$$\frac{I_t}{I_c} = \sqrt{1+\frac{m_a^2}{2}}$$</div>
+  </div>
+</div>
+</section>
+
+<!-- ===================== 29. SEMICONDUCTOR ===================== -->
+<section class="topic-section" id="sec-29">
+<div class="topic-header">
+  <span class="topic-num">29</span>
+  <h2 class="topic-title">Semiconductor</h2>
+  <span class="topic-badge">Electronics</span>
+</div>
+
+<div class="formula-grid">
+  <div class="fcard">
+    <div class="fcard-label">Intrinsic Semiconductor</div>
+    <div class="fcard-formula">$$n_e = n_h = n_i, \quad n_i^2 = n_e n_h$$</div>
+    <div class="fcard-note">Number of electrons reaching conduction band $\propto e^{-E_g/2kT}$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Conductivity</div>
+    <div class="fcard-formula">$$\sigma = e(\mu_e n_e + \mu_h n_h)$$</div>
+    <div class="fcard-note">p-type: $n_h = N_a \gg n_e$; n-type: $n_e = N_d \gg n_h$</div>
+  </div>
+  <div class="fcard">
+    <div class="fcard-label">Dynamic Resistance of PN Junction</div>
+    <div class="fcard-formula">$$r = \frac{\Delta V}{\Delta I}$$</div>
+  </div>
+</div>
+
+<div class="subsection" style="margin-top:20px">
+  <div class="sub-title">Transistor Parameters</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Parameter</th><th>CB Config</th><th>CE Config</th></tr>
+      <tr><td>AC Current Gain</td><td>$\alpha = \Delta I_C/\Delta I_E$</td><td>$\beta = \Delta I_C/\Delta I_B$</td></tr>
+      <tr><td>DC Current Gain</td><td>$\alpha_{dc} = I_C/I_E$ (0.95–0.99)</td><td>$\beta_{dc} = I_C/I_B$</td></tr>
+      <tr><td>Voltage Gain</td><td>$A_V = \alpha \times R_{gain}$</td><td>$A_V = \beta \times R_{gain}$</td></tr>
+      <tr><td>Power Gain</td><td>$A_P = \alpha^2 \times R_{gain}$</td><td>$A_P = \beta^2 \times R_{gain}$</td></tr>
+      <tr><td>Phase (input–output)</td><td>Same phase</td><td>$180°$ phase shift</td></tr>
+    </table>
+  </div>
+  <div class="formula-grid" style="margin-top:14px">
+    <div class="fcard highlight amber">
+      <div class="fcard-label">Relation Between α and β</div>
+      <div class="fcard-formula">$$\beta = \frac{\alpha}{1-\alpha}, \quad \alpha = \frac{\beta}{1+\beta}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Transconductance</div>
+      <div class="fcard-formula">$$g_m = \frac{\Delta I_C}{\Delta V_{EB}} = \frac{\beta}{R_L}A_V \cdot \frac{1}{R_L}$$</div>
+    </div>
+    <div class="fcard">
+      <div class="fcard-label">Current Relation (CE)</div>
+      <div class="fcard-formula">$$I_E = I_C + I_B$$</div>
+    </div>
+  </div>
+</div>
+
+<div class="subsection">
+  <div class="sub-title">Logic Gates</div>
+  <div class="table-wrap">
+    <table class="ftable">
+      <tr><th>Gate</th><th>Boolean Expression</th><th>Truth (A=1, B=1)</th></tr>
+      <tr><td>AND</td><td>$Y = A \cdot B$</td><td>$Y = 1$</td></tr>
+      <tr><td>OR</td><td>$Y = A + B$</td><td>$Y = 1$</td></tr>
+      <tr><td>NOT</td><td>$Y = \bar{A}$</td><td>$Y = 0$</td></tr>
+      <tr><td>NAND</td><td>$Y = \overline{A\cdot B}$</td><td>$Y = 0$</td></tr>
+      <tr><td>NOR</td><td>$Y = \overline{A+B}$</td><td>$Y = 0$</td></tr>
+      <tr><td>XOR</td><td>$Y = A\oplus B$</td><td>$Y = 0$</td></tr>
+    </table>
+  </div>
+</div>
+</section>
+
+</div><!-- end #content -->
+</main>
+
+<script>
+// TOPICS DATA
+const topics = [
+  {id:'sec-1',num:'01',name:'Units & Dimensions'},
+  {id:'sec-2',num:'02',name:'Rectilinear Motion'},
+  {id:'sec-3',num:'03',name:'Projectile Motion & Vectors'},
+  {id:'sec-4',num:'04',name:'Relative Motion'},
+  {id:'sec-5',num:'05',name:'Newton\'s Laws of Motion'},
+  {id:'sec-6',num:'06',name:'Friction'},
+  {id:'sec-7',num:'07',name:'Work, Power & Energy'},
+  {id:'sec-8',num:'08',name:'Circular Motion'},
+  {id:'sec-9',num:'09',name:'Centre of Mass'},
+  {id:'sec-10',num:'10',name:'Rigid Body Dynamics'},
+  {id:'sec-11',num:'11',name:'Simple Harmonic Motion'},
+  {id:'sec-12',num:'12',name:'String Waves'},
+  {id:'sec-13',num:'13',name:'Heat & Thermodynamics'},
+  {id:'sec-14',num:'14',name:'Electrostatics'},
+  {id:'sec-15',num:'15',name:'Current Electricity'},
+  {id:'sec-16',num:'16',name:'Capacitance'},
+  {id:'sec-17',num:'17',name:'Alternating Current'},
+  {id:'sec-18',num:'18',name:'Magnetic Effect of Current'},
+  {id:'sec-19',num:'19',name:'Electromagnetic Induction'},
+  {id:'sec-20',num:'20',name:'Geometrical Optics'},
+  {id:'sec-21',num:'21',name:'Modern Physics'},
+  {id:'sec-22',num:'22',name:'Wave Optics'},
+  {id:'sec-23',num:'23',name:'Gravitation'},
+  {id:'sec-24',num:'24',name:'Fluid Mechanics'},
+  {id:'sec-25',num:'25',name:'Sound Waves'},
+  {id:'sec-26',num:'26',name:'Electromagnetic Waves'},
+  {id:'sec-27',num:'27',name:'Error & Measurement'},
+  {id:'sec-28',num:'28',name:'Communication'},
+  {id:'sec-29',num:'29',name:'Semiconductor'}
+];
+
+// Build sidebar
+const sidebar = document.getElementById('sidebar');
+topics.forEach(t => {
+  const a = document.createElement('a');
+  a.className = 'side-link';
+  a.href = '#' + t.id;
+  a.innerHTML = `<span class="num">${t.num}</span><span class="dot"></span>${t.name}`;
+  a.onclick = (e) => {
+    e.preventDefault();
+    document.getElementById(t.id).scrollIntoView({behavior:'smooth'});
+    if(window.innerWidth < 900) closeSidebar();
+  };
+  sidebar.appendChild(a);
+});
+
+// Scroll progress
+const progress = document.getElementById('progress');
+const btt = document.getElementById('btt');
+window.addEventListener('scroll', () => {
+  const scrolled = document.documentElement.scrollTop;
+  const total = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+  progress.style.width = (scrolled/total*100) + '%';
+  btt.classList.toggle('visible', scrolled > 400);
+
+  // Active sidebar link
+  const sections = document.querySelectorAll('.topic-section');
+  let current = '';
+  sections.forEach(sec => {
+    if(sec.getBoundingClientRect().top <= 100) current = sec.id;
+  });
+  document.querySelectorAll('.side-link').forEach(link => {
+    link.classList.remove('active');
+    if(link.href.includes(current)) link.classList.add('active');
+  });
+});
+
+// Search
+function searchFormulas(query) {
+  const q = query.toLowerCase().trim();
+  const sections = document.querySelectorAll('.topic-section');
+  const noResults = document.getElementById('no-results');
+  let found = 0;
+
+  if(!q) {
+    sections.forEach(s => s.style.display = '');
+    noResults.style.display = 'none';
+    return;
+  }
+
+  sections.forEach(sec => {
+    const text = sec.textContent.toLowerCase();
+    const title = sec.querySelector('.topic-title')?.textContent.toLowerCase();
+    if(text.includes(q) || (title && title.includes(q))) {
+      sec.style.display = '';
+      found++;
+      // Highlight match in labels
+      sec.querySelectorAll('.fcard-label').forEach(el => {
+        if(el.textContent.toLowerCase().includes(q)) {
+          el.style.color = 'var(--cyan)';
+        } else {
+          el.style.color = '';
+        }
+      });
+    } else {
+      sec.style.display = 'none';
+    }
+  });
+
+  noResults.style.display = found === 0 ? 'block' : 'none';
+}
+
+// Sidebar toggle (mobile)
+function toggleSidebar() {
+  document.getElementById('sidebar').classList.toggle('open');
+  document.getElementById('overlay').classList.toggle('show');
+}
+function closeSidebar() {
+  document.getElementById('sidebar').classList.remove('open');
+  document.getElementById('overlay').classList.remove('show');
+}
+
+// KaTeX render on load
+document.addEventListener('DOMContentLoaded', () => {
+  if(typeof renderMathInElement === 'function') {
+    renderMathInElement(document.body, {
+      delimiters: [
+        {left:'$$',right:'$$',display:true},
+        {left:'$',right:'$',display:false}
+      ],
+      throwOnError: false,
+      strict: false
+    });
+  }
+});
+</script>
+</body>
+</html>
